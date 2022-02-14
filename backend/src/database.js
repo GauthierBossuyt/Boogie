@@ -28,6 +28,21 @@ class Database {
     }
 
     /**
+     * Empties table from all content within.
+     * @param {string} name of the table.
+     * @returns {boolean} that indicates if the table is emptied (TRUE) or not (FALSE).
+     */
+    async truncateTable(name) {
+        let tableExists = await this.doesTableExist(name);
+        if (tableExists) {
+            await pg.raw(`TRUNCATE TABLE ${name} RESTART IDENTITY CASCADE`);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
      * Creates the rooms table in the database
      * @returns {boolean} indicating if the database was succesfully made (true) or not (false).
      */
