@@ -1,0 +1,17 @@
+{
+    "name": "boogie-backend",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "jest --watchAll --detectOpenHandles",
+        "start": "nodemon --legacy-watch src/index.js",
+        "test-ci": "jest --ci --detectOpenHandles --forceExite"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "jest": "^27.5.1",
+        "nodemon": "^2.0.15"
+    }
+}
