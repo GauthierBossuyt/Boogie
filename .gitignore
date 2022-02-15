@@ -1,3 +1,4 @@
 .env
 _volumes
 backend/node_modules
+database/node_modules
