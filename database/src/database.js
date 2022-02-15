@@ -103,10 +103,8 @@ class Database {
                         })
                         .returning("code")
                         .then((resp) => pg("rooms").where("code", resp[0].code))
-                        .then((resp) => (result = resp[0]));
-                    console.log(result);
-                    return result.length > 0 ? result : false;
-                
+                        .then((resp) => (result = resp));
+                    return result.length > 0 ? result[0] : false;
                 }
             }
             return false;
@@ -132,7 +130,32 @@ class Database {
             return code;
         }
     }
-    
+
+    /**
+     * Gets an array of the room with the same code
+     * @param {string} code to search the room with.
+     * @returns {array} of all the corresponding room
+     */
+    async getRoom(code) {
+        if (code && (await this.doesTableExist("rooms"))) {
+            let result = await pg("rooms").where("code", code);
+            return result;
+        }
+        return false;
+    }
+
+    /**
+     * Removes a room from the database.
+     * @param {string} code from the room.
+     * @returns an array of the deleted rooms.
+     */
+    async removeRoom(code) {
+        if (code && (await this.doesTableExist("rooms"))) {
+            let result = await pg("rooms").where("code", code).del();
+            return result > 0 ? true : false;
+        }
+        return false;
+    }
 }
 
 const database = new Database();
