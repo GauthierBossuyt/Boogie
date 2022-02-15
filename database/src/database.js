@@ -90,16 +90,24 @@ class Database {
     async addRoom(room) {
         if (room.name && room.description) {
             if (room.service === "Apple" || room.service === "Spotify") {
-                if (this.doesTableExist())
-                    await pg("rooms").insert({
-                        name: room.name,
-                        description: room.description,
-                        party: room.party,
-                        service: room.service,
-                        host: room.host,
-                        code: await this.generateRoomCode(),
-                    });
-                return true;
+                if (this.doesTableExist("rooms")) {
+                    let result;
+                    await pg("rooms")
+                        .insert({
+                            name: room.name,
+                            description: room.description,
+                            party: room.party,
+                            service: room.service,
+                            host: room.host,
+                            code: await this.generateRoomCode(),
+                        })
+                        .returning("code")
+                        .then((resp) => pg("rooms").where("code", resp[0].code))
+                        .then((resp) => (result = resp[0]));
+                    console.log(result);
+                    return result.length > 0 ? result : false;
+                
+                }
             }
             return false;
         } else {
@@ -124,6 +132,7 @@ class Database {
             return code;
         }
     }
+    
 }
 
 const database = new Database();

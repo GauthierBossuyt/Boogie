@@ -19,10 +19,12 @@ beforeAll(async () => {
 test("function to test adding a room to the rooms table", async () => {
     expect(await database.addRoom(ROOM)).toBeTruthy();
     expect(await database.addRoom(ROOM)).toBeTruthy();
-    expect(await database.addRoom({...ROOM, service: 'Youtube'}))
+    expect(await database.addRoom({ ...ROOM, service: "Youtube" })).toBeFalsy();
 });
 
-test("function to test removing a room from the rooms table", async () => {});
+test("function to test removing a room from the rooms table", async () => {
+    
+});
 
 test("function to test getting info from a room", async () => {});
 
