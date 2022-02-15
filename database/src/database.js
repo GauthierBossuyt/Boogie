@@ -152,7 +152,7 @@ class Database {
     async removeRoom(code) {
         if (code && (await this.doesTableExist("rooms"))) {
             let result = await pg("rooms").where("code", code).del();
-            return result > 0 ? true : false;
+            return result === 1 ? true : false;
         }
         return false;
     }

@@ -20,20 +20,62 @@ ROOM_ROUTER.route("/")
     .get(async (req, res) => {
         if (req.body.code) {
             let result = await database.getRoom(req.body.code);
-            if (result > 0) {
+            if (result.length > 0) {
                 res.status(200).send({ room: result[0] });
             } else {
                 res.status(404).send({ message: "Room not found!" });
             }
+        } else {
+            res.status(400).send({
+                message: "A code is necessary to join a room!",
+            });
         }
-        res.status(400).send({
-            message: "A code is necessary to join the room!",
-        });
     })
 
-    .delete(async (req, res) => {})
+    .delete(async (req, res) => {
+        if (req.body.code) {
+            if (await database.removeRoom(req.body.code)) {
+                res.status(200).send({
+                    message: "Room has been deleted succesfully!",
+                });
+            } else {
+                res.status(404).send({
+                    message: `A room couldn't be found with this code.`,
+                });
+            }
+        } else {
+            res.status(400).send({
+                message: "A code is necessary to delete a room!",
+            });
+        }
+    })
 
-    .post(async (req, res) => {});
+    .post(async (req, res) => {
+        if (req.body.room) {
+            if (
+                req.body.room.name &&
+                req.body.room.description &&
+                req.body.room.party &&
+                req.body.room.service &&
+                req.body.room.host
+            ) {
+                let result = await database.addRoom(req.body.room);
+                if (result === false) {
+                    res.status(404).send({
+                        ERROR: `The credentials given an incorrect!`,
+                    });
+                } else {
+                    res.status(200).send({ room: result });
+                }
+            } else {
+                res.status(400).send({
+                    ERROR: "All credentials to make a room should be given!",
+                });
+            }
+        } else {
+            res.status(400).send({ ERROR: "Credentials must be given!" });
+        }
+    });
 
 SERVER.get("/", async (req, res) => {
     res.status(200).send({
