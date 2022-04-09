@@ -35,6 +35,7 @@ services:
             - backend
 
     backend:
+        build: ./backend
         container_name: backend
         volumes:
             - ./backend/src:/USR/backend/src
