@@ -2,3 +2,4 @@
 _volumes
 backend/node_modules
 database/node_modules
+frontend/node_modules
