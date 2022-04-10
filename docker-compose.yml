@@ -18,21 +18,19 @@ services:
             pg:
                 condition: service_healthy
 
-    frontend:
-        container_name: frontend
-        restart: always
-        build:
-            context: .
-            dockerfile: ./frontend/Dockerfile
-        ports:
-            - 80:3000
-        environment:
-            API_PORT: ${FRONTEND_PORT}
-            CHOKIDAR_USEPOLLING: "true"
-        volumes:
-            - ./frontend:/USR/src/app
-        depends_on:
-            - backend
+    # frontend:
+    #     container_name: frontend
+    #     restart: always
+    #     build: ./frontend
+    #     ports:
+    #         - "${FRONTEND_PORT}:3000"
+    #     environment:
+    #         API_PORT: ${BACKEND_PORT}
+    #         CHOKIDAR_USEPOLLING: "true"
+    #     volumes:
+    #         - ./frontend:/USR/src/app
+    #     depends_on:
+    #         - backend
 
     backend:
         build: ./backend

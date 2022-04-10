@@ -1,0 +1,61 @@
+.Login_page {
+    background-color: #050401;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    margin-bottom: 3rem;
+}
+
+.Login {
+    width: 50vw;
+    max-width: 350px;
+}
+
+.Login h1 {
+    font-weight: bold;
+    margin: 0 0 1.25rem;
+    text-align: left;
+}
+
+.Login p {
+    margin: 0 0 3.8rem;
+    padding: 0;
+}
+
+.Login a {
+    text-decoration: none;
+    color: #050401;
+    display: block;
+    margin-bottom: 1.25rem;
+    padding: 1rem;
+    border-radius: 6px;
+    font-size: 1.25rem;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.Login a img {
+    width: 2.3rem;
+    height: 2.3rem;
+    margin-right: 1rem;
+}
+
+.Login a p {
+    margin: 0;
+    padding: 0;
+    color: #050401;
+}
+
+#Spotify {
+    background-color: #1ed760;
+}
+
+#Apple {
+    background-color: #fff;
+}

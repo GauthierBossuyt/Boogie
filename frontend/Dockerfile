@@ -2,10 +2,10 @@ FROM node:latest
 
 WORKDIR /USR/src/app
 
-COPY ./frontend/package*.json ./
-RUN npm install
-RUN npm install react-scripts@3.4.1 -g
+COPY package*.json ./
+RUN npm install --silent
+RUN npm install react-scripts@5.0.0 -g --silent
 
-COPY ./frontend ./
+COPY ./ ./
 
-CMD ["npm", "start"]
+CMD ["npm", "run", "start"]
