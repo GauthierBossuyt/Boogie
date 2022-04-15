@@ -2,6 +2,7 @@ import "./login.css";
 import Spotify_icon from "../images/SVG/Spotify.svg";
 import Logo from "../images/SVG/Logo.svg";
 import Apple_Icon from "../images/SVG/Apple.svg";
+import { loginURL } from "./spotify";
 
 function Login() {
     return (
@@ -14,7 +15,7 @@ function Login() {
                     the services below.
                 </p>
                 <div>
-                    <a id="Spotify" href="https://www.google.com">
+                    <a id="Spotify" href={loginURL}>
                         <img src={Spotify_icon} alt="Spotify icon"></img>
                         <p>Continue using Spotify</p>
                     </a>

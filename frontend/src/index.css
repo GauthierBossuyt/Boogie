@@ -168,6 +168,7 @@ body {
     font-family: "Mazin Medium", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: #050401;
 }
 
 code {

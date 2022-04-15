@@ -33,3 +33,5 @@ Boogie takes being the DJ to the next level. Our multiple-service integration br
 
 My name is **Gauthier Bossuyt** and I am a third year Multimedia and Creative Technologies student at the Erasmus University College Brussels. During my education, I had courses in web design and development, motion design, live visuals and motion capture. If you have any questions feel free to **[contact me](mailto:gauthier.bossuyt@student.ehb.be)**.
 #
+
+https://dev.to/dipscoder/spotify-authentication-using-client-react-and-server-expressjs-27l0

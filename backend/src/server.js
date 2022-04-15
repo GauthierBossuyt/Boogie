@@ -1,12 +1,17 @@
 //PACKAGES
 const express = require("express");
 const bodyParser = require("body-parser");
+const cors = require("cors");
+
+//ROUTING FILES
+const spotify = require("./spotify");
 
 //GLOBAL VARIABLES
 const SERVER = express();
-const SPOTIFY_ROUTER = express.Router();
+const LOGIN_ROUTER = express.Router();
 
 //FUNCTIONS
+SERVER.use(cors());
 SERVER.use(bodyParser.json());
 SERVER.use(
     bodyParser.urlencoded({
@@ -14,11 +19,9 @@ SERVER.use(
     })
 );
 
-SPOTIFY_ROUTER.route("/").get(async (req, res) => {
-    res.status(200).send();
-});
+LOGIN_ROUTER.route("/spotify").post(spotify.spotify_login);
 
-SERVER.get("/", async (req, res) => {
+SERVER.get("/", (req, res) => {
     res.status(200).send({
         name: "BOOGIE API",
         description:
@@ -28,6 +31,6 @@ SERVER.get("/", async (req, res) => {
     });
 });
 
-SERVER.use("/spotify", SPOTIFY_ROUTER);
+SERVER.use("/login", LOGIN_ROUTER);
 
 module.exports = SERVER;
