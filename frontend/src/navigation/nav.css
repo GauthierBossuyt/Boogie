@@ -1,0 +1,77 @@
+nav {
+    width: 100vw;
+    padding: 0 5vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    box-sizing: border-box;
+    margin-top: 1rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-height: 50px;
+}
+
+.nav_logo {
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.nav_dropdown {
+    background-color: #1e1e1e;
+    border-radius: 6px;
+    padding: 0.35rem 0.65rem;
+    cursor: pointer;
+}
+
+.nav_topbar {
+    display: flex;
+    align-items: center;
+    column-gap: 1rem;
+}
+
+.nav_service {
+    width: 2rem;
+    height: 2rem;
+    float: left;
+}
+
+.nav_dropdown h2 {
+    float: left;
+    color: #fffaff;
+    margin: 0;
+    font-family: "Mazin Bold";
+    font-size: 1.25rem;
+}
+
+.nav_arrow {
+    width: 0.8rem;
+    height: 0.8rem;
+}
+
+.nav_botbar a {
+    color: #fff;
+    text-decoration: none;
+    width: 100%;
+    font-family: "Mazin Bold";
+    font-size: 1.5rem;
+    text-transform: uppercase;
+}
+
+.nav_botbar {
+    margin-top: 1rem;
+    border-radius: 6px;
+    text-align: center;
+    padding-bottom: 0.5rem;
+}
+
+.nav_botbar a {
+    display: inline-block;
+    padding: 0.2rem 0rem;
+}
+
+.nav_botbar a:hover {
+    background-color: #ff2d6b;
+    border-radius: 6px;
+    color: #050401;
+}

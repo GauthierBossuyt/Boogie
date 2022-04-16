@@ -1,17 +1,19 @@
 import React from "react";
-import ReactDOM from "react-dom";
 
 import "./index.css";
 
 import Dashboard from "./dashboard/dashboard";
 import Login from "./login/login.js";
 
+import { createRoot } from "react-dom/client";
+const container = document.getElementById("root");
+const root = createRoot(container);
+
 const code = new URLSearchParams(window.location.search).get("code");
 const type = new URLSearchParams(window.location.search).get("type");
 
-ReactDOM.render(
+root.render(
     <React.StrictMode>
-        {code && type ? <Dashboard code={code} type={type} /> : <Login />}
-    </React.StrictMode>,
-    document.getElementById("root")
+        {code ? <Dashboard code={code} type={type} /> : <Login />}
+    </React.StrictMode>
 );

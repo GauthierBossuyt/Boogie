@@ -15,8 +15,7 @@ export default function useAuth(code) {
                 setAccessToken(resp.data.accessToken);
             })
             .catch(() => {
-                window.location =
-                    "/?error='Failed to connect with your spotify account. Try again later...";
+                window.location = "/";
             });
     }, [code]);
 

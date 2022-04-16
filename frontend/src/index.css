@@ -188,3 +188,26 @@ p {
     font-weight: 400;
     color: #fff;
 }
+
+a {
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+.cta-button {
+    background-color: #ff2d6b;
+    color: #050401;
+    padding: 0.45rem 2.75rem;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    font-family: "Mazin Bold";
+}
+
+.border-button {
+    border: 2px solid #ff2d6b;
+    text-transform: uppercase;
+    font-family: "Mazin Bold";
+    font-size: 1.25rem;
+    padding: 0.45rem 2.75rem;
+    color: #ff2d6b;
+}

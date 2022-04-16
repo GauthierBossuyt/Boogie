@@ -1,0 +1,17 @@
+.room-options {
+    display: grid;
+    grid-template-columns: 4fr 4fr 4fr;
+}
+
+.room-join {
+    grid-column: 1/2;
+}
+
+.room-create {
+    grid-column: 3/4;
+    text-align: right;
+}
+
+.room-options p {
+    margin-bottom: 3rem;
+}
