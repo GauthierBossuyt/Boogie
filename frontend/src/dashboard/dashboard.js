@@ -3,8 +3,10 @@ import useAuth from "./useAuth";
 import SpotifyWebApi from "spotify-web-api-node";
 import "./dashboard.css";
 
-import Room from "./room/room.js";
 import Navigation from "../navigation/nav";
+import Selection from "./room/selection.js";
+import CreateRoom from "./room/forms/createForm.js";
+import JoinRoom from "./room/forms/joinForm.js";
 
 const spotifyApi = new SpotifyWebApi({
     clientId: "acce0f858d36481e8c57ced906643960",
@@ -13,6 +15,7 @@ const spotifyApi = new SpotifyWebApi({
 const Dashboard = ({ code }) => {
     const accessToken = useAuth(code);
     const [Data, setData] = useState();
+    const [Active, setActive] = useState("selection");
 
     useEffect(() => {
         if (!accessToken) return;
@@ -22,13 +25,31 @@ const Dashboard = ({ code }) => {
         });
     }, [accessToken]);
 
+    const changeContentState = (e) => {
+        setActive(e);
+    };
+
     return (
         <div className="dashboard">
             {Data ? (
                 <div>
-                    <Navigation account={Data.body} />
+                    <Navigation account={Data.body} func={changeContentState} />
                     <div className="content">
-                        <Room></Room>
+                        {Active === "selection" ? (
+                            <Selection func={changeContentState} />
+                        ) : (
+                            ""
+                        )}
+                        {Active === "createRoom" ? (
+                            <CreateRoom func={changeContentState} />
+                        ) : (
+                            ""
+                        )}
+                        {Active === "joinRoom" ? (
+                            <JoinRoom func={changeContentState} />
+                        ) : (
+                            ""
+                        )}
                     </div>
                 </div>
             ) : (

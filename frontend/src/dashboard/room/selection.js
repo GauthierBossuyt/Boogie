@@ -1,7 +1,7 @@
 import React from "react";
-import "./room.css";
+import "./selection.css";
 
-function Room() {
+function Selection(func) {
     return (
         <div className="room-options">
             <div className="room-join">
@@ -10,9 +10,15 @@ function Room() {
                     Fill in the room code to join a room. The code can be found
                     within the room at the top of the screen.
                 </p>
-                <a className="cta-button" href="https://google.com">
+                <button
+                    onClick={() => {
+                        func.func("joinRoom");
+                    }}
+                    className="cta-button"
+                    href="https://google.com"
+                >
                     Join Room
-                </a>
+                </button>
             </div>
             <div className="room-create">
                 <h1>Create A Room</h1>
@@ -20,12 +26,18 @@ function Room() {
                     Create a session to jam together in a room. You can invite
                     friends by sharing the room code.
                 </p>
-                <a className="border-button" href="https://google.com">
+                <button
+                    onClick={() => {
+                        func.func("createRoom");
+                    }}
+                    className="border-button"
+                    href="https://google.com"
+                >
                     Create Room
-                </a>
+                </button>
             </div>
         </div>
     );
 }
 
-export default Room;
+export default Selection;

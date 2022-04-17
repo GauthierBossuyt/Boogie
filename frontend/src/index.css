@@ -189,15 +189,18 @@ p {
     color: #fff;
 }
 
-a {
+button {
+    box-shadow: none;
+    border: none;
     border-radius: 6px;
-    text-decoration: none;
+    background-color: transparent;
+    cursor: pointer;
 }
 
 .cta-button {
     background-color: #ff2d6b;
     color: #050401;
-    padding: 0.45rem 2.75rem;
+    padding: 0.5rem 1.5rem;
     font-size: 1.25rem;
     text-transform: uppercase;
     font-family: "Mazin Bold";
@@ -208,6 +211,22 @@ a {
     text-transform: uppercase;
     font-family: "Mazin Bold";
     font-size: 1.25rem;
-    padding: 0.45rem 2.75rem;
+    padding: 0.5rem 1.5rem;
     color: #ff2d6b;
+}
+
+input[type="text"] {
+    background-color: transparent;
+    border: none;
+    border-bottom: 3px solid #4a4a4a;
+    color: #ff2d6b;
+    font-size: 3.5rem;
+    font-family: "Mazin Bold";
+    text-align: center;
+    text-transform: uppercase;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-bottom: 3px solid #ff2d6b;
 }

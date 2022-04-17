@@ -2,9 +2,9 @@ import React from "react";
 
 import "./index.css";
 
-import Dashboard from "./dashboard/dashboard";
+import Dashboard from "./dashboard/dashboard.js";
 import Login from "./login/login.js";
-
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { createRoot } from "react-dom/client";
 const container = document.getElementById("root");
 const root = createRoot(container);
@@ -14,6 +14,16 @@ const type = new URLSearchParams(window.location.search).get("type");
 
 root.render(
     <React.StrictMode>
-        {code ? <Dashboard code={code} type={type} /> : <Login />}
+        <Router>
+            <Routes>
+                <Route path="/login" element={<Login />} />
+                <Route
+                    path="/"
+                    element={
+                        code ? <Dashboard code={code} type={type} /> : <Login />
+                    }
+                />
+            </Routes>
+        </Router>
     </React.StrictMode>
 );
