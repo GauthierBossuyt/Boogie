@@ -12,11 +12,12 @@ const spotifyApi = new SpotifyWebApi({
     clientId: "acce0f858d36481e8c57ced906643960",
 });
 
-const Dashboard = ({ code }) => {
+const Dashboard = ({ code, type }) => {
     const accessToken = useAuth(code);
     const [Data, setData] = useState();
     const [Active, setActive] = useState("selection");
     const [Token, setToken] = useState();
+    const [Type, setType] = useState();
 
     useEffect(() => {
         if (!accessToken) return;
@@ -25,7 +26,8 @@ const Dashboard = ({ code }) => {
             setData(data);
         });
         setToken(accessToken);
-    }, [accessToken]);
+        setType(type);
+    }, [accessToken, type]);
 
     const changeContentState = (e) => {
         setActive(e);
@@ -46,6 +48,7 @@ const Dashboard = ({ code }) => {
                             <CreateRoom
                                 func={changeContentState}
                                 accessToken={Token}
+                                type={type}
                             />
                         ) : (
                             ""
@@ -54,6 +57,7 @@ const Dashboard = ({ code }) => {
                             <JoinRoom
                                 func={changeContentState}
                                 accessToken={Token}
+                                type={type}
                             />
                         ) : (
                             ""

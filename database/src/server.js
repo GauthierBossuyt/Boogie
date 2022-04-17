@@ -1,19 +1,26 @@
 //PACKAGES
 const express = require("express");
 const bodyParser = require("body-parser");
+const cors = require("cors");
+
 const { database } = require("./database.js");
+const spotify = require("./routes/spotify.js");
 
 //GLOBAL VARIABLES
 const SERVER = express();
 const ROOM_ROUTER = express.Router();
+const LOGIN_ROUTER = express.Router();
 
 //FUNCTIONS
+SERVER.use(cors());
 SERVER.use(bodyParser.json());
 SERVER.use(
     bodyParser.urlencoded({
         extended: true,
     })
 );
+
+LOGIN_ROUTER.route("/spotify").post(spotify.spotify_login);
 
 ROOM_ROUTER.route("/")
 
@@ -62,7 +69,7 @@ ROOM_ROUTER.route("/")
                 let result = await database.addRoom(req.body.room);
                 if (result === false) {
                     res.status(404).send({
-                        ERROR: `The credentials given an incorrect!`,
+                        ERROR: `The credentials given are incorrect!`,
                     });
                 } else {
                     res.status(200).send({ room: result });
@@ -88,4 +95,5 @@ SERVER.get("/", async (req, res) => {
 });
 
 SERVER.use("/rooms", ROOM_ROUTER);
+SERVER.use("/login", LOGIN_ROUTER);
 module.exports = SERVER;

@@ -9,7 +9,6 @@ const credentials = {
 exports.spotify_login = function (req, res) {
     let spotifyAPI = new SpotifyWebApi(credentials);
     const code = req.body.code;
-    console.log(code);
     spotifyAPI
         .authorizationCodeGrant(code)
         .then((data) => {

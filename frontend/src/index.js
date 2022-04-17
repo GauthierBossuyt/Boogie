@@ -19,7 +19,11 @@ root.render(
             <Route
                 path="/"
                 element={
-                    code ? <Dashboard code={code} type={type} /> : <Login />
+                    code ? (
+                        <Dashboard code={code} type={"Spotify"} />
+                    ) : (
+                        <Login />
+                    )
                 }
             />
         </Routes>

@@ -3,6 +3,7 @@ import "./joinForm.js";
 
 const CreateForm = (func) => {
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState("");
     const [token, setToken] = useState();
 
     useEffect(() => {
@@ -11,8 +12,9 @@ const CreateForm = (func) => {
 
     function formResultToObject(e) {
         e.preventDefault();
-        let result = {};
-        for (let i = 0; i < e.target.length - 2; i++) {
+        setError(false);
+        let result = { host: token, service: func.type };
+        for (let i = 0; i < e.target.length - 3; i++) {
             if (e.target[i].type === "checkbox") {
                 result[e.target[i].id] = e.target[i].checked;
             } else {
@@ -20,7 +22,25 @@ const CreateForm = (func) => {
             }
         }
         setLoading(true);
-        console.log(result, token);
+        createRoom(result);
+    }
+
+    async function createRoom(data) {
+        console.log(data);
+        let result = await fetch("http://localhost:8080/rooms", {
+            method: "POST",
+            cache: "no-cache",
+            mode: "cors",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ room: data }),
+        }).then((resp) => resp.json());
+        if (result.ERROR) {
+            setError(result.ERROR);
+            setLoading(false);
+        }
+        console.log(result);
     }
 
     return (
@@ -28,6 +48,11 @@ const CreateForm = (func) => {
             {!loading ? (
                 <div className="create-form-content">
                     <h1>Create A Room</h1>
+                    {error.length > 0 ? (
+                        <p className="error-message">{error}</p>
+                    ) : (
+                        ""
+                    )}
                     <form
                         onSubmit={(e) => {
                             formResultToObject(e);
@@ -37,16 +62,17 @@ const CreateForm = (func) => {
                             <label>
                                 <h3>Name</h3>
                                 <input
-                                    id="room_name"
+                                    id="name"
                                     name="room_name"
                                     type="text"
                                     placeholder="Room name"
+                                    minLength={4}
                                 />
                             </label>
                             <label>
                                 <h3>Description</h3>
                                 <textarea
-                                    id="room_description"
+                                    id="description"
                                     name="room_description"
                                     placeholder="Write here the description of your room."
                                 ></textarea>
@@ -62,10 +88,7 @@ const CreateForm = (func) => {
                                 </div>
                                 <div className="radio">
                                     <label className="switch">
-                                        <input
-                                            type="checkbox"
-                                            id="party_mode"
-                                        />
+                                        <input type="checkbox" id="party" />
                                         <span className="slider round"></span>
                                     </label>
                                 </div>

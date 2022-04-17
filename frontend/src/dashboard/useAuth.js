@@ -6,7 +6,7 @@ export default function useAuth(code) {
 
     useEffect(() => {
         axios
-            .post("http://localhost:8000/login/spotify", {
+            .post("http://localhost:8080/login/spotify", {
                 code,
                 type: "Spotify",
             })

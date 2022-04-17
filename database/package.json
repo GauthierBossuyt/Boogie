@@ -11,11 +11,15 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "express": "^4.17.2",
+        "body-parser": "^1.20.0",
+        "cors": "^2.8.5",
+        "express": "^4.17.3",
         "jest": "^27.5.1",
         "knex": "^1.0.3",
         "nodemon": "^2.0.15",
         "pg": "^8.7.3",
+        "socket.io": "^4.4.1",
+        "spotify-web-api-node": "^5.0.2",
         "supertest": "^6.2.2"
     }
 }
