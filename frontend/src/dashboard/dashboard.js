@@ -16,6 +16,7 @@ const Dashboard = ({ code }) => {
     const accessToken = useAuth(code);
     const [Data, setData] = useState();
     const [Active, setActive] = useState("selection");
+    const [Token, setToken] = useState();
 
     useEffect(() => {
         if (!accessToken) return;
@@ -23,6 +24,7 @@ const Dashboard = ({ code }) => {
         spotifyApi.getMe().then((data) => {
             setData(data);
         });
+        setToken(accessToken);
     }, [accessToken]);
 
     const changeContentState = (e) => {
@@ -41,12 +43,18 @@ const Dashboard = ({ code }) => {
                             ""
                         )}
                         {Active === "createRoom" ? (
-                            <CreateRoom func={changeContentState} />
+                            <CreateRoom
+                                func={changeContentState}
+                                accessToken={Token}
+                            />
                         ) : (
                             ""
                         )}
                         {Active === "joinRoom" ? (
-                            <JoinRoom func={changeContentState} />
+                            <JoinRoom
+                                func={changeContentState}
+                                accessToken={Token}
+                            />
                         ) : (
                             ""
                         )}

@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+// import { io } from "socket.io-client";
 import "./forms.css";
 
 const JoinForm = (func) => {
@@ -6,6 +7,16 @@ const JoinForm = (func) => {
     const input2 = React.createRef();
     const input3 = React.createRef();
     const input4 = React.createRef();
+    // const socket = io("http://localhost:8000", { autoConnect: false });
+
+    useEffect(() => {
+        console.log("mount");
+        // socket.connect();
+        // return () => {
+        //     socket.disconnect();
+        //     console.log("unmount");
+        // };
+    }, []);
 
     function OnFocus(e) {
         if (e.target.value.length > 0) {

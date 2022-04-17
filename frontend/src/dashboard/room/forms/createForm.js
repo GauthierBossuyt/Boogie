@@ -1,8 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./joinForm.js";
 
 const CreateForm = (func) => {
     const [loading, setLoading] = useState(false);
+    const [token, setToken] = useState();
+
+    useEffect(() => {
+        setToken(func.accessToken);
+    }, [func]);
 
     function formResultToObject(e) {
         e.preventDefault();
@@ -15,7 +20,7 @@ const CreateForm = (func) => {
             }
         }
         setLoading(true);
-        console.log(result);
+        console.log(result, token);
     }
 
     return (
@@ -35,7 +40,7 @@ const CreateForm = (func) => {
                                     id="room_name"
                                     name="room_name"
                                     type="text"
-                                    placeholder="Your room name"
+                                    placeholder="Room name"
                                 />
                             </label>
                             <label>
@@ -43,7 +48,7 @@ const CreateForm = (func) => {
                                 <textarea
                                     id="room_description"
                                     name="room_description"
-                                    placeholder="Your rooms placeholder"
+                                    placeholder="Write here the description of your room."
                                 ></textarea>
                             </label>
 

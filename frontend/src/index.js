@@ -13,17 +13,15 @@ const code = new URLSearchParams(window.location.search).get("code");
 const type = new URLSearchParams(window.location.search).get("type");
 
 root.render(
-    <React.StrictMode>
-        <Router>
-            <Routes>
-                <Route path="/login" element={<Login />} />
-                <Route
-                    path="/"
-                    element={
-                        code ? <Dashboard code={code} type={type} /> : <Login />
-                    }
-                />
-            </Routes>
-        </Router>
-    </React.StrictMode>
+    <Router>
+        <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route
+                path="/"
+                element={
+                    code ? <Dashboard code={code} type={type} /> : <Login />
+                }
+            />
+        </Routes>
+    </Router>
 );
