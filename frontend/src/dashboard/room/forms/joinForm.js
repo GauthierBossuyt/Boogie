@@ -1,16 +1,19 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 // import { io } from "socket.io-client";
 import "./forms.css";
 
 const JoinForm = (func) => {
+    const navigate = useNavigate();
     const input1 = React.createRef();
     const input2 = React.createRef();
     const input3 = React.createRef();
     const input4 = React.createRef();
+
+    const [ERROR, setError] = useState("");
     // const socket = io("http://localhost:8000", { autoConnect: false });
 
     useEffect(() => {
-        console.log("mount");
         // socket.connect();
         // return () => {
         //     socket.disconnect();
@@ -36,10 +39,37 @@ const JoinForm = (func) => {
         }
     }
 
+    async function onSubmit(value) {
+        setError("");
+        value = value.toUpperCase();
+        let res = await fetch(`http://localhost:8080/rooms?code=${value}`).then(
+            (resp) => {
+                return resp.json();
+            }
+        );
+        if (res.room) {
+            console.log(res.room);
+            navigate("/session", {
+                state: {
+                    accessToken: func.accessToken,
+                    sessionCode: res.room.code,
+                    service: func.type,
+                },
+            });
+        } else {
+            setError(res.message);
+        }
+    }
+
     return (
         <div className="join-form">
             <div className="join-form-content">
                 <h1>Fill in the room code</h1>
+                {ERROR.length > 0 ? (
+                    <p className="error-message">{ERROR}</p>
+                ) : (
+                    ""
+                )}
                 <form
                     onSubmit={(e) => {
                         e.preventDefault();
@@ -47,7 +77,7 @@ const JoinForm = (func) => {
                         for (let i = 0; i < 4; i++) {
                             value += e.target[i].value;
                         }
-                        console.log(value);
+                        onSubmit(value);
                     }}
                 >
                     <div className="input-fields">

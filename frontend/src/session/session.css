@@ -1,0 +1,10 @@
+.session {
+    width: 100%;
+}
+
+.session-remark {
+    background-color: #1e1e1e;
+    font-size: 2rem;
+    color: #fff;
+    position: absolute;
+}

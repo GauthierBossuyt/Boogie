@@ -17,7 +17,6 @@ const Dashboard = ({ code, type }) => {
     const [Data, setData] = useState();
     const [Active, setActive] = useState("selection");
     const [Token, setToken] = useState();
-    const [Type, setType] = useState();
 
     useEffect(() => {
         if (!accessToken) return;
@@ -26,7 +25,6 @@ const Dashboard = ({ code, type }) => {
             setData(data);
         });
         setToken(accessToken);
-        setType(type);
     }, [accessToken, type]);
 
     const changeContentState = (e) => {

@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
-import "./joinForm.js";
+import { useNavigate } from "react-router-dom";
+import "./forms.css";
 
 const CreateForm = (func) => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
     const [token, setToken] = useState();
+    const navigate = useNavigate();
 
     useEffect(() => {
         setToken(func.accessToken);
@@ -26,7 +28,6 @@ const CreateForm = (func) => {
     }
 
     async function createRoom(data) {
-        console.log(data);
         let result = await fetch("http://localhost:8080/rooms", {
             method: "POST",
             cache: "no-cache",
@@ -39,8 +40,16 @@ const CreateForm = (func) => {
         if (result.ERROR) {
             setError(result.ERROR);
             setLoading(false);
+        } else if (result.room) {
+            // window.location = `/session/${result.room.host}/${result.room.code}/${result.room.service}`;
+            navigate("/session", {
+                state: {
+                    accessToken: result.room.host,
+                    sessionCode: result.room.code,
+                    service: result.room.service,
+                },
+            });
         }
-        console.log(result);
     }
 
     return (

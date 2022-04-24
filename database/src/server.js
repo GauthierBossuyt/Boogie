@@ -25,8 +25,9 @@ LOGIN_ROUTER.route("/spotify").post(spotify.spotify_login);
 ROOM_ROUTER.route("/")
 
     .get(async (req, res) => {
-        if (req.body.code) {
-            let result = await database.getRoom(req.body.code);
+        console.log(req.query.code);
+        if (req.query.code) {
+            let result = await database.getRoom(req.query.code);
             if (result.length > 0) {
                 res.status(200).send({ room: result[0] });
             } else {

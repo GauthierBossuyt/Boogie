@@ -1,7 +1,6 @@
 @font-face {
     font-family: "Mazin Black";
-    src: url("./font/FONTSPRINGDEMO-MazinBlackRegular.woff2") format("woff2"),
-        url("./font/FONTSPRINGDEMO-MazinBlackRegular.woff") format("woff");
+    src: url("./font/Mazin_Black.ttf");
     font-weight: 900;
     font-style: normal;
     font-display: swap;
@@ -9,8 +8,7 @@
 
 @font-face {
     font-family: "Mazin Black Italic";
-    src: url("./font/FONTSPRINGDEMO-MazinBlackItalic.woff2") format("woff2"),
-        url("./font/FONTSPRINGDEMO-MazinBlackItalic.woff") format("woff");
+    src: url("./font/Mazin_Black_Italic.ttf");
     font-weight: 900;
     font-style: italic;
     font-display: swap;
@@ -18,9 +16,7 @@
 
 @font-face {
     font-family: "Mazin Extra Bold";
-    src: url("./font/FONTSPRINGDEMO-MazinExtraBoldRegular.woff2")
-            format("woff2"),
-        url("./font/FONTSPRINGDEMO-MazinExtraBoldRegular.woff") format("woff");
+    src: url("./font/Mazin_ExtraBold.ttf");
     font-weight: bold;
     font-style: normal;
     font-display: swap;
@@ -28,8 +24,7 @@
 
 @font-face {
     font-family: "Mazin Bold Italic";
-    src: url("./font/FONTSPRINGDEMO-MazinBoldItalic.woff2") format("woff2"),
-        url("./font/FONTSPRINGDEMO-MazinBoldItalic.woff") format("woff");
+    src: url("./font/Mazin_Bold_Italic.ttf");
     font-weight: bold;
     font-style: italic;
     font-display: swap;
@@ -37,8 +32,7 @@
 
 @font-face {
     font-family: "Mazin Regular";
-    src: url("./font/FONTSPRINGDEMO-MazinRegular.woff2") format("woff2"),
-        url("./font/FONTSPRINGDEMO-MazinRegular.woff") format("woff");
+    src: url("./font/Mazin_Regular.ttf");
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -46,8 +40,7 @@
 
 @font-face {
     font-family: "Mazin Thin";
-    src: url("./font/FONTSPRINGDEMO-MazinThinRegular.woff2") format("woff2"),
-        url("./font/FONTSPRINGDEMO-MazinThinRegular.woff") format("woff");
+    src: url("./font/Mazin_Thin.ttf");
     font-weight: 100;
     font-style: normal;
     font-display: swap;
@@ -55,8 +48,7 @@
 
 @font-face {
     font-family: "Mazin Medium";
-    src: url("./font/FONTSPRINGDEMO-MazinMediumRegular.woff2") format("woff2"),
-        url("./font/FONTSPRINGDEMO-MazinMediumRegular.woff") format("woff");
+    src: url("./font/Mazin_Medium.ttf");
     font-weight: 500;
     font-style: normal;
     font-display: swap;
@@ -64,8 +56,7 @@
 
 @font-face {
     font-family: "Mazin Extra Bold Italic";
-    src: url("./font/FONTSPRINGDEMO-MazinExtraBoldItalic.woff2") format("woff2"),
-        url("./font/FONTSPRINGDEMO-MazinExtraBoldItalic.woff") format("woff");
+    src: url("./font/Mazin_ExtraBold_Italic.ttf");
     font-weight: bold;
     font-style: italic;
     font-display: swap;
@@ -73,8 +64,7 @@
 
 @font-face {
     font-family: "Mazin Bold";
-    src: url("./font/FONTSPRINGDEMO-MazinBold.woff2") format("woff2"),
-        url("./font/FONTSPRINGDEMO-MazinBold.woff") format("woff");
+    src: url("./font/Mazin_Bold.ttf");
     font-weight: bold;
     font-style: normal;
     font-display: swap;
@@ -82,8 +72,7 @@
 
 @font-face {
     font-family: "Mazin Semi Bold Italic";
-    src: url("./font/FONTSPRINGDEMO-MazinSemiBoldItalic.woff2") format("woff2"),
-        url("./font/FONTSPRINGDEMO-MazinSemiBoldItalic.woff") format("woff");
+    src: url("./font/Mazin_SemiBold_Italic.ttf");
     font-weight: 600;
     font-style: italic;
     font-display: swap;
@@ -91,8 +80,7 @@
 
 @font-face {
     font-family: "Mazin Light Italic";
-    src: url("./font/FONTSPRINGDEMO-MazinLightItalic.woff2") format("woff2"),
-        url("./font/FONTSPRINGDEMO-MazinLightItalic.woff") format("woff");
+    src: url("./font/Mazin_ExtraLight_Italic.ttf");
     font-weight: 300;
     font-style: italic;
     font-display: swap;
@@ -100,8 +88,7 @@
 
 @font-face {
     font-family: "Mazin Italic";
-    src: url("./font/FONTSPRINGDEMO-MazinItalic.woff2") format("woff2"),
-        url("./font/FONTSPRINGDEMO-MazinItalic.woff") format("woff");
+    src: url("./font/Mazin_Regular_Italic.ttf");
     font-weight: normal;
     font-style: italic;
     font-display: swap;
@@ -109,9 +96,7 @@
 
 @font-face {
     font-family: "Mazin Extra Light";
-    src: url("./font/FONTSPRINGDEMO-MazinExtraLightRegular.woff2")
-            format("woff2"),
-        url("./font/FONTSPRINGDEMO-MazinExtraLightRegular.woff") format("woff");
+    src: url("./font/Mazin_ExtraLight.ttf");
     font-weight: 200;
     font-style: normal;
     font-display: swap;
@@ -119,8 +104,7 @@
 
 @font-face {
     font-family: "Mazin Light";
-    src: url("./font/FONTSPRINGDEMO-MazinLightRegular.woff2") format("woff2"),
-        url("./font/FONTSPRINGDEMO-MazinLightRegular.woff") format("woff");
+    src: url("./font/Mazin_Light.ttf");
     font-weight: 300;
     font-style: normal;
     font-display: swap;
@@ -128,8 +112,7 @@
 
 @font-face {
     font-family: "Mazin Semi Bold";
-    src: url("./font/FONTSPRINGDEMO-MazinSemiBoldRegular.woff2") format("woff2"),
-        url("./font/FONTSPRINGDEMO-MazinSemiBoldRegular.woff") format("woff");
+    src: url("./font/Mazin_SemiBold.ttf");
     font-weight: 600;
     font-style: normal;
     font-display: swap;
@@ -137,8 +120,7 @@
 
 @font-face {
     font-family: "Mazin Thin Italic";
-    src: url("./font/FONTSPRINGDEMO-MazinThinItalic.woff2") format("woff2"),
-        url("./font/FONTSPRINGDEMO-MazinThinItalic.woff") format("woff");
+    src: url("./font/Mazin_Thin_Italic.ttf");
     font-weight: 100;
     font-style: italic;
     font-display: swap;
@@ -146,8 +128,7 @@
 
 @font-face {
     font-family: "Mazin Medium Italic";
-    src: url("./font/FONTSPRINGDEMO-MazinMediumItalic.woff2") format("woff2"),
-        url("./font/FONTSPRINGDEMO-MazinMediumItalic.woff") format("woff");
+    src: url("./font/Mazin_Medium_Italic.ttf");
     font-weight: 500;
     font-style: italic;
     font-display: swap;
@@ -155,9 +136,7 @@
 
 @font-face {
     font-family: "Mazin Extra Light Italic";
-    src: url("./font/FONTSPRINGDEMO-MazinExtraLightItalic.woff2")
-            format("woff2"),
-        url("./font/FONTSPRINGDEMO-MazinExtraLightItalic.woff") format("woff");
+    src: url("./font/Mazin_ExtraLight_Italic.ttf");
     font-weight: 200;
     font-style: italic;
     font-display: swap;
@@ -215,7 +194,8 @@ button {
     color: #ff2d6b;
 }
 
-input[type="text"] {
+.input-fields input[type="text"],
+.create-form-inputs input[type="text"] {
     background-color: transparent;
     border: none;
     border-bottom: 3px solid #4a4a4a;
@@ -226,7 +206,8 @@ input[type="text"] {
     text-transform: uppercase;
 }
 
-input[type="text"]:focus {
+.input-fields input[type="text"]:focus,
+.create-form-inputs input[type="text"]:focus {
     outline: none;
     border-bottom: 3px solid #ff2d6b;
 }
