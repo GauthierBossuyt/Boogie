@@ -3,6 +3,7 @@
     grid-template-columns: 1fr 4fr 3fr 2fr 2fr;
     column-gap: 1rem;
     align-items: center;
+    position: relative;
 }
 
 .nav-searchbar {
@@ -67,4 +68,8 @@
     display: flex;
     justify-content: flex-end;
     column-gap: 5rem;
+}
+
+.nav_logo {
+    cursor: pointer;
 }

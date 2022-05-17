@@ -1,0 +1,80 @@
+.search_screen {
+    width: 100%;
+    height: calc(100vh - 200px);
+    overflow-x: hidden;
+}
+
+.search_screen::-webkit-scrollbar {
+    display: none;
+}
+
+.search_screen {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.search-title-bar h1 {
+    font-size: 1.5rem;
+}
+
+.search-title-bar button {
+    height: 2rem;
+    font-size: 1rem;
+    padding: 0rem 1rem 0 35px;
+    position: relative;
+}
+
+.search-title-bar button img {
+    position: absolute;
+    height: 30px;
+    top: calc(50% - 15px);
+    left: 0px;
+}
+
+.search-title-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 3rem 1rem 1rem;
+}
+
+.assortment {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    row-gap: 2rem;
+    column-gap: 1rem;
+}
+
+.playlist-tile {
+    width: 150px;
+    height: 220px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.playlist-tile-image {
+    height: 150px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.playlist-tile-image img {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+}
+
+.playlist-tile-info h3 {
+    margin: 0.2rem 0 0;
+    color: #fff;
+    font-size: 0.6rem;
+    font-family: "Mazin Regular";
+}
+
+.playlist-tile-info h2 {
+    margin: 0.5rem 0 0;
+    font-size: 0.8rem;
+    font-family: "Mazin Bold";
+    color: #fff;
+}
