@@ -2,7 +2,7 @@ import "./result.css";
 import Left from "./svg/left.svg";
 import { useEffect, useRef, useState } from "react";
 
-const Result = ({ results }) => {
+const Result = ({ results, addToQueue }) => {
     const [active, setActive] = useState({ inc: 0, data: {} });
     const [data, setData] = useState({});
     const resultsList = useRef(null);
@@ -10,6 +10,18 @@ const Result = ({ results }) => {
     useEffect(() => {
         setData(results);
     }, [results]);
+
+    useEffect(() => {
+        if (data.tracks) {
+            if (data.tracks.length > 0) {
+                if (data.type === "playlist") {
+                    setActive({ inc: 0, data: data.tracks[0].track });
+                } else if (data.type === "search") {
+                    setActive({ inc: 0, data: data.tracks[0] });
+                }
+            }
+        }
+    }, [data]);
 
     function changeActiveSong(dir) {
         let inc = active.inc + dir;
@@ -42,6 +54,10 @@ const Result = ({ results }) => {
                         } else if (e.key === "ArrowLeft") {
                             setTimeout(() => {
                                 changeActiveSong(-1);
+                            }, 250);
+                        } else if(e.key === " ") {
+                            setTimeout(() => {
+                                
                             }, 250);
                         }
                     }}
@@ -118,8 +134,11 @@ const Result = ({ results }) => {
                             />
                             <button
                                 className="cta-button"
-                                onClick={(e) => {
-                                    console.log(active);
+                                onClick={() => {
+                                    addToQueue({
+                                        uri: active.data.uri,
+                                        id: active.data.id,
+                                    });
                                 }}
                             >
                                 Add

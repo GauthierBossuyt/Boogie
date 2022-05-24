@@ -122,3 +122,7 @@
     border-radius: 6px;
     background-color: #5c5b59;
 }
+
+#queue-icon {
+    cursor: pointer;
+}

@@ -11,15 +11,6 @@ const JoinForm = (func) => {
     const input4 = React.createRef();
 
     const [ERROR, setError] = useState("");
-    // const socket = io("http://localhost:8000", { autoConnect: false });
-
-    useEffect(() => {
-        // socket.connect();
-        // return () => {
-        //     socket.disconnect();
-        //     console.log("unmount");
-        // };
-    }, []);
 
     function OnFocus(e) {
         if (e.target.value.length > 0) {

@@ -4,7 +4,12 @@ import Search from "../../images/SVG/search.svg";
 import Logout from "../../images/SVG/logout.svg";
 import Settings from "../../images/SVG/settings.svg";
 
-const SessionNav = ({ sessionCode, toggleContent, searchResult }) => {
+const SessionNav = ({
+    sessionCode,
+    toggleContent,
+    searchResult,
+    showRoomDetails,
+}) => {
     return (
         <nav className="session_nav">
             <img
@@ -51,6 +56,7 @@ const SessionNav = ({ sessionCode, toggleContent, searchResult }) => {
                     src={Settings}
                     alt={"Settings-icon"}
                     onClick={() => {
+                        showRoomDetails(sessionCode);
                         toggleContent("settings");
                     }}
                 ></img>

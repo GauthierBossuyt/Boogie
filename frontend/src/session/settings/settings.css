@@ -1,0 +1,99 @@
+.setting_screen {
+    height: calc(100vh - 200px);
+    box-sizing: border-box;
+}
+
+.setting_content {
+    padding: 2rem 0rem;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.setting_content button {
+    padding: 0.4rem 3rem;
+}
+
+.settings-cols {
+    width: 100%;
+    display: flex;
+    padding-top: 2.5rem;
+    height: 100%;
+    box-sizing: border-box;
+    justify-content: space-between;
+    column-gap: 10rem;
+}
+
+.settings-col1,
+.settings-col2 {
+    height: 100%;
+    width: 50%;
+    box-sizing: border-box;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+}
+
+.settings-col1::-webkit-scrollbar,
+.settings-col2::-webkit-scrollbar {
+    display: none;
+}
+
+.settings-col1 h1,
+.settings-col2 h1 {
+    font-size: 2rem;
+    font-family: "Mazin Bold";
+    margin-bottom: 0.5rem;
+}
+
+.sett-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sett-section p {
+    font-size: 1rem;
+    max-width: 80%;
+    color: #ababab;
+    overflow-x: hidden;
+    white-space: nowrap;
+    margin: 0.5rem 0;
+}
+
+.sett-section button {
+    color: #fff;
+    font-size: 1rem;
+    font-family: "Mazin Bold";
+    text-transform: uppercase;
+}
+
+.connected_users,
+.banned_users,
+.ban-song-form,
+.banned_songs {
+    margin-bottom: 2.5rem;
+}
+
+.input-song-ban {
+    position: relative;
+}
+
+.input-song-ban input {
+    background-color: transparent;
+    color: #ababab;
+    font-size: 1.25rem;
+    border: 2px solid #fff;
+    outline: none;
+    border-radius: 6px;
+    padding: 0.75rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.input-song-ban img {
+    position: absolute;
+    right: 1rem;
+    top: 1.1rem;
+}

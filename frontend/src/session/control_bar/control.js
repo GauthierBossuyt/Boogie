@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import Queue from "../../images/SVG/queue.svg";
 import "./control.css";
 
-const Control = ({ accessToken, spotifyAPI }) => {
+const Control = ({ accessToken, spotifyAPI, triggerVoting, getQueueData }) => {
     const [data, setData] = useState();
     const [playState, setPlayState] = useState(true);
     const [time, setTime] = useState({ duration: -1, left: 0 });
@@ -22,8 +22,6 @@ const Control = ({ accessToken, spotifyAPI }) => {
                     .getMyCurrentPlaybackState()
                     .then((data) => {
                         if (data.statusCode === 200) {
-                            console.log(data);
-
                             data.body.is_playing
                                 ? setPlayState(true)
                                 : setPlayState(false);
@@ -36,10 +34,17 @@ const Control = ({ accessToken, spotifyAPI }) => {
                         return data;
                     })
                     .then((data) => {
-                        setTime({
-                            duration: data.item.duration_ms,
-                            left: data.item.duration_ms - data.progress_ms,
-                        });
+                        if (data.item !== undefined) {
+                            setTime({
+                                duration: data.item.duration_ms,
+                                left: data.item.duration_ms - data.progress_ms,
+                            });
+                        } else {
+                            setTime({
+                                duration: 0,
+                                left: 0,
+                            });
+                        }
                     });
             };
             storeData();
@@ -50,13 +55,14 @@ const Control = ({ accessToken, spotifyAPI }) => {
         if (time.left > 0) {
             setTimeout(() => {
                 let new_time = time.left - 1000;
-                if (new_time > 0) {
+                if (new_time > 1) {
                     setTime_String(MStoMinAndSec(new_time));
                     setPercentage(
                         Math.floor(100 - (time.left / time.duration) * 100)
                     );
                     setTime({ duration: time.duration, left: new_time });
                 } else {
+                    triggerVoting();
                     loadNewSong();
                 }
             }, 1000);
@@ -65,19 +71,23 @@ const Control = ({ accessToken, spotifyAPI }) => {
 
     async function loadNewSong() {
         await setTime({ duration: 0, left: 0 });
+
         await API.getMyCurrentPlaybackState()
             .then((data) => {
-                console.log(data);
-                if (data.is_playing === false) {
-                    setPlayState(false);
+                if (data.statusCode === 200) {
+                    if (data.body.is_playing === false) {
+                        setPlayState(false);
+                        return false;
+                    } else if (data.body.is_playing === true) {
+                        setPlayState(true);
+                        setData(data.body);
+                        return data.body;
+                    }
+                } else {
                     return false;
-                } else if (data.is_playing === true) {
-                    setData(data.body);
-                    return data.body;
                 }
             })
             .then((data) => {
-                console.log(data);
                 if (data === false) {
                     return;
                 } else {
@@ -172,14 +182,21 @@ const Control = ({ accessToken, spotifyAPI }) => {
 
                     <p className="progress_time">{time_string}</p>
 
-                    <img src={Queue} alt="queue-icon"></img>
+                    <img
+                        id="queue-icon"
+                        onClick={() => {
+                            getQueueData();
+                        }}
+                        src={Queue}
+                        alt="queue-icon"
+                    />
 
                     <button
                         onClick={() => {
-                            console.log("hi");
+                            loadNewSong();
                         }}
                     >
-                        Skip
+                        Refresh
                     </button>
                 </div>
             ) : (
@@ -197,7 +214,14 @@ const Control = ({ accessToken, spotifyAPI }) => {
 
                     <p className="progress_time">00:00</p>
 
-                    <img src={Queue} alt="queue-icon"></img>
+                    <img
+                        id="queue-icon"
+                        onClick={() => {
+                            getQueueData();
+                        }}
+                        src={Queue}
+                        alt="queue-icon"
+                    ></img>
 
                     <button
                         onClick={() => {

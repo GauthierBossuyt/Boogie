@@ -26,6 +26,7 @@ test("POST /rooms", async () => {
     response = await REQUEST.post(ROUTE).send({ room: ROOM });
     expect(response.status).toBe(200);
     ROOM.code = response.body.room.code;
+    console.log(ROOM.code);
     response = await REQUEST.post(ROUTE).send({
         room: { ...ROOM, service: "Youtube" },
     });
@@ -35,6 +36,7 @@ test("POST /rooms", async () => {
 test("GET /rooms", async () => {
     let response = await REQUEST.get(ROUTE);
     expect(response.status).toBe(400);
+    console.log(ROOM.code);
     response = await REQUEST.get(ROUTE).send({ code: ROOM.code });
     expect(response.status).toBe(200);
     response = await REQUEST.get(ROUTE).send({ code: "ABDF" });
@@ -44,7 +46,6 @@ test("GET /rooms", async () => {
 test("DELETE /rooms", async () => {
     let response = await REQUEST.delete(ROUTE);
     expect(response.status).toBe(400);
-    console.log(ROOM.code);
     response = await REQUEST.delete(ROUTE).send({ code: ROOM.code });
     expect(response.status).toBe(200);
     response = await REQUEST.delete(ROUTE).send({ code: "ABCD" });

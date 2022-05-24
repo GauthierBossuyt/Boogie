@@ -1,11 +1,12 @@
+//import { useState } from "react";
 import "./voting.css";
 
 const Voting = (data) => {
-    return (
-        <div className="voting_screen">
-            <h1>Voting...</h1>
-        </div>
-    );
+    //const [voteData, setVoteData] = useState({});
+
+    return (<div className="voting_screen">
+        
+    </div>);
 };
 
 export default Voting;
