@@ -1,0 +1,8 @@
+.info_screen p {
+  line-height: 1.6rem;
+  width: 50%;
+}
+
+.info_screen p span {
+  line-height: 3rem;
+}

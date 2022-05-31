@@ -1,0 +1,56 @@
+.popup {
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(5, 4, 1, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+}
+
+.popup-container {
+  background-color: #ff2d6b;
+  color: #050401;
+  border-radius: 16px;
+  padding: 1rem 1.5rem;
+  max-width: 20vw;
+}
+
+.popup-container h2 {
+  margin: 0;
+  font-size: 2rem;
+  font-family: "Mazin Bold";
+  text-transform: uppercase;
+}
+
+#popup-text {
+  color: #050401;
+  margin: 0;
+  padding-top: 1rem;
+}
+
+.popup-button,
+.popup-cta {
+  font-size: 1.25rem;
+  font-family: "Mazin Bold";
+  padding: 0.25rem 2.5rem;
+  text-transform: uppercase;
+}
+
+.popup-button {
+  border: 2px solid #050401;
+}
+
+.popup-cta {
+  background-color: #050401;
+  color: #ff2d6b;
+}
+
+.popup-buttons {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+}

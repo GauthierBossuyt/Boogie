@@ -1,20 +1,33 @@
 .session {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    justify-content: space-between;
-    overflow-y: hidden;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: space-between;
+  overflow-y: hidden;
+  position: relative;
 }
 
 .session-remark {
-    background-color: #1e1e1e;
-    font-size: 2rem;
-    color: #fff;
-    position: absolute;
+  background-color: #1e1e1e;
+  font-size: 2rem;
+  color: #fff;
+  position: absolute;
 }
 
 .session_content {
-    padding: 0 5vw;
-    box-sizing: border-box;
+  padding: 0 5vw;
+  box-sizing: border-box;
+}
+
+.result_screen,
+.voting_screen,
+.queue_screen,
+.search_screen {
+  width: 100%;
+  height: calc(100vh - 200px);
+  overflow-x: hidden;
+  box-sizing: border-box;
+  padding-top: 2.5vh;
+  outline: none;
 }

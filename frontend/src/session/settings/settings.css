@@ -1,99 +1,171 @@
 .setting_screen {
-    height: calc(100vh - 200px);
-    box-sizing: border-box;
+  height: calc(100vh - 200px);
+  box-sizing: border-box;
+  margin-top: 2.5vh;
 }
 
 .setting_content {
-    padding: 2rem 0rem;
-    width: 100%;
-    height: 100%;
-    box-sizing: border-box;
+  padding: 2rem 0rem;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
 }
 
 .setting_content button {
-    padding: 0.4rem 3rem;
+  padding: 0.4rem 3rem;
 }
 
 .settings-cols {
-    width: 100%;
-    display: flex;
-    padding-top: 2.5rem;
-    height: 100%;
-    box-sizing: border-box;
-    justify-content: space-between;
-    column-gap: 10rem;
+  width: 100%;
+  display: flex;
+  padding-top: 2.5rem;
+  height: 100%;
+  box-sizing: border-box;
+  justify-content: space-between;
+  column-gap: 10rem;
 }
 
 .settings-col1,
 .settings-col2 {
-    height: 100%;
-    width: 50%;
-    box-sizing: border-box;
-    overflow-y: scroll;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-    scroll-behavior: smooth;
+  height: 100%;
+  width: 50%;
+  box-sizing: border-box;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
 }
 
 .settings-col1::-webkit-scrollbar,
 .settings-col2::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 .settings-col1 h1,
 .settings-col2 h1 {
-    font-size: 2rem;
-    font-family: "Mazin Bold";
-    margin-bottom: 0.5rem;
+  font-size: 2rem;
+  font-family: "Mazin Bold";
+  margin-bottom: 0.5rem;
+  margin-top: 0;
 }
 
 .sett-section {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .sett-section p {
-    font-size: 1rem;
-    max-width: 80%;
-    color: #ababab;
-    overflow-x: hidden;
-    white-space: nowrap;
-    margin: 0.5rem 0;
+  font-size: 1rem;
+  max-width: 80%;
+  color: #ababab;
+  overflow-x: hidden;
+  white-space: nowrap;
+  margin: 0.5rem 0;
 }
 
-.sett-section button {
-    color: #fff;
-    font-size: 1rem;
-    font-family: "Mazin Bold";
-    text-transform: uppercase;
+.sett-section button,
+.ban-song-result button {
+  color: #fff;
+  font-size: 1rem;
+  font-family: "Mazin Bold";
+  text-transform: uppercase;
+  padding: 0;
 }
 
 .connected_users,
 .banned_users,
 .ban-song-form,
 .banned_songs {
-    margin-bottom: 2.5rem;
+  margin-bottom: 2.5rem;
 }
 
 .input-song-ban {
-    position: relative;
+  position: relative;
 }
 
 .input-song-ban input {
-    background-color: transparent;
-    color: #ababab;
-    font-size: 1.25rem;
-    border: 2px solid #fff;
-    outline: none;
-    border-radius: 6px;
-    padding: 0.75rem;
-    width: 100%;
-    box-sizing: border-box;
+  background-color: transparent;
+  color: #ababab;
+  font-size: 1.25rem;
+  border: 2px solid #fff;
+  outline: none;
+  border-radius: 6px;
+  padding: 0.75rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .input-song-ban img {
-    position: absolute;
-    right: 1rem;
-    top: 1.1rem;
+  position: absolute;
+  right: 1rem;
+  top: 1.1rem;
+}
+
+.ban-song-result {
+  display: grid;
+  width: 100%;
+  box-sizing: border-box;
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-column-gap: 1rem;
+}
+
+.ban-song-img img {
+  height: 64px;
+  width: 64px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.ban-song-info p:first-of-type {
+  font-family: "Mazin Bold";
+  font-size: 1rem;
+  margin: 0 0 0.2rem;
+}
+
+.ban-song-info p:last-of-type {
+  font-family: "Mazin Regular";
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+.ban-song-info p {
+  white-space: nowrap;
+}
+
+.ban-song-info {
+  overflow-x: hidden;
+}
+
+.song-result-list {
+  max-height: 240px;
+  overflow-y: scroll;
+  box-sizing: border-box;
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  border-radius: 8px;
+}
+
+.actions-list {
+  background-color: #1e1e1e;
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.24rem;
+  max-height: 240px;
+  overflow-y: scroll;
+}
+
+.actions-list p {
+  color: #ababab;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.actions-list p span {
+  color: #fff;
 }
