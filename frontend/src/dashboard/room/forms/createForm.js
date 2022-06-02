@@ -110,18 +110,20 @@ const CreateForm = (func) => {
                 </div>
               </div> */}
             </div>
-            <button
-              type="button"
-              className="border-button"
-              onClick={() => {
-                func.func("selection");
-              }}
-            >
-              Back
-            </button>
-            <button className="cta-button submit-button" type="submit">
-              Create Room
-            </button>
+            <div className="create-form-buttons">
+              <button
+                type="button"
+                className="border-button"
+                onClick={() => {
+                  func.func("selection");
+                }}
+              >
+                Back
+              </button>
+              <button className="cta-button submit-button" type="submit">
+                Create Room
+              </button>
+            </div>
           </form>
         </div>
       ) : (

@@ -114,7 +114,10 @@ const Settings = ({
                       return (
                         <div className="ban-song-result" key={song.id}>
                           <div className="ban-song-img">
-                            <img src={song.album.images[0].url} />
+                            <img
+                              src={song.album.images[0].url}
+                              alt={song.name}
+                            />
                           </div>
                           <div className="ban-song-info">
                             <p>{song.name}</p>
@@ -147,7 +150,10 @@ const Settings = ({
                           className="banned-song ban-song-result"
                         >
                           <div className="ban-song-img">
-                            <img src={song.album.images[0].url} />
+                            <img
+                              src={song.album.images[0].url}
+                              alt={song.name}
+                            />
                           </div>
                           <div className="ban-song-info">
                             <p>{song.name}</p>

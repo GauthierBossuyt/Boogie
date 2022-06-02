@@ -1,0 +1,82 @@
+@media screen and (max-width: 768px) {
+  .voting_screen {
+    height: 100%;
+  }
+
+  .vote-carousel {
+    display: block;
+    overflow: scroll;
+    touch-action: none;
+    scroll-behavior: smooth;
+    height: 80%;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .vote-carousel::-webkit-scrollbar {
+    display: none;
+  }
+
+  .vote-container {
+    display: flex;
+    column-gap: 2.5rem;
+    touch-action: none;
+    height: 100%;
+  }
+
+  .vote:first-of-type {
+    padding-left: calc(50vw - 125px);
+  }
+
+  .vote:last-of-type {
+    padding-right: calc(50vw - 125px);
+  }
+
+  .vote {
+    min-width: 250px;
+    overflow-x: hidden;
+    touch-action: none;
+    height: 100%;
+  }
+
+  .vote-img {
+    touch-action: none;
+    position: relative;
+  }
+
+  .vote-img img {
+    opacity: 0.7;
+    touch-action: none;
+    width: 100%;
+  }
+
+  .vote-img p {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 6rem;
+    margin: 0;
+    color: #ff2d6b;
+    font-family: "Mazin Extra Bold";
+    touch-action: none;
+    cursor: default;
+  }
+
+  .vote-text {
+    text-align: center;
+    overflow: hidden;
+    margin: 0 1.2rem;
+  }
+
+  .vote-text h1 {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .vote-text p {
+    margin: 0;
+    font-size: 1.25rem;
+  }
+}

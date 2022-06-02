@@ -1,0 +1,17 @@
+.mb-queue-screen {
+  box-sizing: border-box;
+  margin: 0 36px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+}
+
+.mb-queue-screen p {
+  margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .queue-result-info {
+    overflow-x: hidden;
+  }
+}

@@ -254,6 +254,7 @@ class Socket {
       this.io
         .in(room_id)
         .emit("display message", `${song.data.name} will be played next!`);
+      this.roomData[room_id].played_songs.push(song.data);
       this.roomData[room_id].actions.push({
         message: `has been added to the Spotify queue.`,
         target: song.data.name,

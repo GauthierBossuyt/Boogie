@@ -1,47 +1,59 @@
 .notification {
-    position: absolute;
-    bottom: 0px;
-    left: 50%;
-    transform: translate(-50%, 0);
-    opacity: 1;
-    animation: show-notification 7s ease-in-out 0s 1 forwards;
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  opacity: 1;
+  animation: show-notification 7s ease-in-out 0s 1 forwards;
 }
 
 .notification-info {
-    background-color: #1e1e1e;
-    display: flex;
-    column-gap: 1rem;
-    padding: 0.5rem 1.5rem;
-    border-radius: 6px;
-    cursor: pointer;
-    align-items: center;
+  background-color: #1e1e1e;
+  display: flex;
+  column-gap: 1rem;
+  padding: 0.5rem 1.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  align-items: center;
 }
 
 .notification-info h1 {
-    font-size: 1rem;
-    font-family: "Mazin Bold";
-    margin: 0;
+  font-size: 1rem;
+  font-family: "Mazin Bold";
+  margin: 0;
 }
 
 @keyframes show-notification {
-    0% {
-        bottom: 0px;
-        opacity: 0;
-        display: none;
-    }
-    25% {
-        bottom: 100px;
-        opacity: 1;
-        display: block;
-    }
-    75% {
-        bottom: 100px;
-        opacity: 1;
-        display: block;
-    }
-    100% {
-        bottom: 0px;
-        opacity: 0;
-        display: none;
-    }
+  0% {
+    bottom: 0px;
+    opacity: 0;
+    display: none;
+  }
+  25% {
+    bottom: 100px;
+    opacity: 1;
+    display: block;
+  }
+  75% {
+    bottom: 100px;
+    opacity: 1;
+    display: block;
+  }
+  100% {
+    bottom: 0px;
+    opacity: 0;
+    display: none;
+  }
+}
+
+@media screen and (max-width: 786px) {
+  .notification {
+    left: 72px;
+    transform: translate(-36px, 0);
+  }
+
+  .notification-info h1 {
+    font-size: 0.75rem;
+    text-align: center;
+  }
 }

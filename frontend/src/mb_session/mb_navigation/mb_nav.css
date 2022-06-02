@@ -1,0 +1,94 @@
+.mb-nav {
+  box-sizing: border-box;
+  padding: 1.5rem 2.25rem 0;
+}
+
+.mb-nav-row1 {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  column-gap: 0.5rem;
+  align-items: center;
+}
+
+.mb-nav-row1 img {
+  max-width: 45px;
+  width: 100%;
+}
+
+.mb-nav-id p:first-of-type {
+  font-size: 1rem;
+  margin: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.mb-nav-id p:last-of-type {
+  font-size: 1.5rem;
+  font-family: "Mazin Bold";
+  margin: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.mb-nav-set {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: right;
+}
+
+.mb-nav-set img {
+  width: 27px;
+  max-width: 100%;
+}
+
+.mb-nav-row2 {
+  margin-top: 1.5rem;
+}
+
+.nav-searchbar {
+  height: 48px;
+}
+
+.nav-searchbar input {
+  box-sizing: border-box;
+}
+
+.nav-searchbar .search_icon {
+  right: 10px;
+}
+
+.mb-nav-row3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.mb-nav-row3 p {
+  font-size: 1rem;
+  font-family: "Mazin Medium";
+  margin: 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #1e1e1e;
+  cursor: pointer;
+}
+
+.mb-nav-row3 .active {
+  border-bottom: 2px solid #ff2d6b;
+}
+
+.mb-nav-row3 button {
+  background-color: #ff2d6b;
+  font-size: 1.25rem;
+  font-family: "Mazin Bold";
+  padding: 0.5rem 2.5rem;
+  text-transform: uppercase;
+  margin-top: 0.5rem;
+}
+
+.centered {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}

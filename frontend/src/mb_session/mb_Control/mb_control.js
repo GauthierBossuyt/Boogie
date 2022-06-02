@@ -1,14 +1,11 @@
-import { useEffect, useRef, useState } from "react";
-import Queue from "../../images/SVG/queue.svg";
-import "./control.css";
+import { useEffect, useState } from "react";
+import "./mb_control.css";
 
-const Control = ({
+const Mb_Control = ({
   accessToken,
   spotifyAPI,
   triggerVoting,
-  getQueueData,
   setCurrentSong,
-  votingData,
 }) => {
   const [data, setData] = useState();
   const [playState, setPlayState] = useState(true);
@@ -16,9 +13,6 @@ const Control = ({
   const [time_string, setTime_String] = useState(0);
   const [percentage, setPercentage] = useState("");
   const [API, setAPI] = useState();
-  const [Animation, setAnimation] = useState(false);
-  const Title = useRef();
-  const Artists = useRef();
 
   useEffect(() => {
     if (accessToken && spotifyAPI) {
@@ -86,6 +80,7 @@ const Control = ({
           if (data.body.is_playing === false) {
             return false;
           } else if (data.body.is_playing === true) {
+            console.log(data.body);
             setPlayState(true);
             setData(data.body);
             return data.body;
@@ -114,137 +109,53 @@ const Control = ({
     return minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
   }
 
-  function scrollElement(ref) {
-    setAnimation(true);
-    const width = ref.current.clientWidth;
-    const scrollWidth = ref.current.scrollWidth;
-    ref.current.scrollLeft = 0;
-    if (scrollWidth > width) {
-      let goRight = true;
-      const ID = setInterval(() => {
-        if (goRight) {
-          ref.current.scrollLeft += 1;
-          if (ref.current.scrollLeft >= scrollWidth - width) goRight = false;
-        } else if (!goRight) {
-          ref.current.scrollLeft -= 1;
-          if (ref.current.scrollLeft <= 0) {
-            setAnimation(false);
-            clearInterval(ID);
-          }
-        }
-      }, 80);
-    }
-  }
-
   return (
-    <div className="control_bar">
+    <div className="mb_control_bar">
       {playState && data ? (
-        <div className="control_bar_data">
+        <div className="mb_control_bar_data">
           <img
             src={data.item.album.images[2].url}
             alt={data.item.name}
             className="song_data_album"
           />
-
-          <div className="song_data_info">
-            <h3
-              ref={Title}
-              onMouseEnter={() => {
-                if (!Animation) scrollElement(Title);
-              }}
-            >
-              {data.item.name}
-            </h3>
-            <div
-              ref={Artists}
-              onMouseEnter={() => {
-                if (!Animation) scrollElement(Artists);
-              }}
-              className="song_data_artists"
-            >
-              {data.item.artists.map((artist, i) => {
-                return (
-                  <p key={artist.id} className="song_data_artist">
-                    {i > 0 ? ", " + artist.name : artist.name}
+          <div className="mb_song_data">
+            <div className="mb_song_data_info">
+              <div className="mb_song_data_text">
+                <h3>{data.item.name}</h3>
+                <div className="mb_song_data_artists">
+                  <p className="song_data_artist">
+                    {data.item.artists[0].name}
                   </p>
-                );
-              })}
+                </div>
+              </div>
+              <div className="mb_song_data_time">
+                <p className="progress_time mb_progress_time">{time_string}</p>
+              </div>
             </div>
-          </div>
-
-          <div className="control_bar_progress">
-            <div className="base_bar"> </div>
-            <div
-              className="progress_bar"
-              style={{
-                width: percentage + "%",
-              }}
-            ></div>
-          </div>
-
-          <p className="progress_time">{time_string}</p>
-
-          <img
-            id="queue-icon"
-            onClick={() => {
-              getQueueData();
-            }}
-            src={Queue}
-            alt="queue-icon"
-          />
-
-          <div className="coming-up">
-            <h1>Most Votes:</h1>
-            {votingData[0] ? (
-              <p>
-                {[...votingData]
-                  .sort((a, b) => b.votes - a.votes)
-                  .map((song, i) => {
-                    if (i === 0) {
-                      return song.data.name;
-                    }
-                  })}
-              </p>
-            ) : (
-              <p>Add songs to queue!</p>
-            )}
+            <div className="control_bar_progress">
+              <div
+                className="base_bar"
+                style={{ width: percentage + "%" }}
+              ></div>
+            </div>
           </div>
         </div>
       ) : (
-        <div className="control_bar_data">
+        <div className="mb_control_bar_data">
           <div className="unknown_data_album"></div>
-
-          <div className="song_data_info">
-            <div className="unknown_data_title"></div>
-            <div className="unknown_data_artists"></div>
+          <div className="unknown_data_refresh">
+            <button
+              onClick={() => {
+                loadNewSong();
+              }}
+            >
+              Refresh
+            </button>
           </div>
-
-          <div className="control_bar_progress">
-            <div className="base_bar"> </div>
-          </div>
-
-          <p className="progress_time">00:00</p>
-
-          <img
-            id="queue-icon"
-            onClick={() => {
-              getQueueData();
-            }}
-            src={Queue}
-            alt="queue-icon"
-          ></img>
-
-          <button
-            onClick={() => {
-              loadNewSong();
-            }}
-          >
-            Refresh
-          </button>
         </div>
       )}
     </div>
   );
 };
 
-export default Control;
+export default Mb_Control;

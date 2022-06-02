@@ -1,0 +1,49 @@
+.mb_setting_Screen {
+  margin: 0 36px;
+  overflow-y: scroll;
+  height: 100%;
+  width: 100%;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.mb_search_screen::-webkit-scrollbar {
+  display: none;
+}
+
+.mb_setting_content {
+  display: flex;
+  flex-direction: column;
+  row-gap: 3rem;
+  padding-bottom: 5rem;
+}
+
+.mb_settings_container h1 {
+  font-size: 1.5rem;
+  font-family: "Mazin Bold";
+}
+
+.settings-buttons {
+  display: flex;
+  column-gap: 1rem;
+}
+
+.mb-set-end-butt,
+.mb-set-leave-butt {
+  width: 100%;
+  font-family: "Mazin Bold";
+  font-size: 1rem;
+  margin: 0;
+  padding: 0.5rem 1.25rem;
+  text-transform: uppercase;
+}
+
+.mb-set-end-butt {
+  color: #ff2d6b;
+  width: 100%;
+  border: 1px solid #ff2d6b;
+}
+
+.mb-set-leave-butt {
+  background-color: #ff2d6b;
+}

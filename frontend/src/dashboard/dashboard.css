@@ -1,15 +1,28 @@
 .dashboard {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
 }
 
 .content {
-    height: 100vh;
-    width: 100vw;
-    padding: 50px 5vw;
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
+  height: 100vh;
+  width: 100vw;
+  padding: 50px 5vw;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.content-text h1 {
+  font-size: 3.75rem;
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .content {
+    padding: 50px 36px;
+  }
 }

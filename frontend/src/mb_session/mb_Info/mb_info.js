@@ -1,8 +1,8 @@
-import "./info.css";
+import "./mb_info.css";
 
-const Info = () => {
+const Mb_Info = () => {
   return (
-    <div className="info_screen">
+    <div className="mb-info-screen">
       <h1>Instructions</h1>
       <p>
         <span className="text-italics">
@@ -18,4 +18,4 @@ const Info = () => {
   );
 };
 
-export default Info;
+export default Mb_Info;
