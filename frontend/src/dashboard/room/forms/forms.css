@@ -1,7 +1,7 @@
 .join-form,
 .create-form {
   display: grid;
-  grid-template-columns: 4fr 4fr 4fr;
+  grid-template-columns: auto 375px auto;
   width: 100%;
 }
 
@@ -14,6 +14,7 @@
 .join-form h1,
 .create-form h1 {
   font-size: 4rem;
+  font-family: "Mazin Extra Bold";
 }
 
 .create-form h1 {
@@ -233,6 +234,7 @@ input:checked + .slider:before {
   text-transform: uppercase;
   margin: 0;
   color: #ff2d6b;
+  font-family: "Mazin Bold";
 }
 
 @media screen and (max-width: 768px) {

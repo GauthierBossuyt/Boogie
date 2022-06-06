@@ -195,6 +195,7 @@ const Mb_Session = () => {
         });
 
         socket.on("force leave", () => {
+          socket.disconnect();
           navigate("/login");
         });
 
@@ -240,9 +241,12 @@ const Mb_Session = () => {
     socket.emit("vote for song", sessionCode, song);
   }
 
-  function setCurrentSong(song) {
+  async function setCurrentSong(song) {
     if (sessionCode) {
-      socket.emit("Set Current Song", sessionCode, song);
+      let audiofeatures = await spotifyApi.getAudioFeaturesForTrack(
+        song.item.id
+      );
+      socket.emit("Set Current Song", sessionCode, song, audiofeatures.body);
     }
   }
 

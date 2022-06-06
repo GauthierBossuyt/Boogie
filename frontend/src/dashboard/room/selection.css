@@ -1,17 +1,26 @@
 .room-options {
-    display: grid;
-    grid-template-columns: 4fr 4fr 4fr;
+  display: grid;
+  grid-template-columns: 4fr 4fr 4fr;
+  grid-column-gap: 1rem;
 }
 
 .room-join {
-    grid-column: 1/2;
+  grid-column: 1/2;
 }
 
 .room-create {
-    grid-column: 3/4;
-    text-align: right;
+  grid-column: 3/4;
+  text-align: right;
 }
 
 .room-options p {
-    margin-bottom: 3rem;
+  margin-bottom: 3rem;
+  margin-top: 0;
+}
+
+.room-join h1,
+.room-create h1 {
+  font-size: 3.75rem;
+  font-family: "Mazin Extra Bold";
+  margin-bottom: 0.75rem;
 }

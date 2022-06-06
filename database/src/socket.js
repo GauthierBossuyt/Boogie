@@ -6,6 +6,7 @@ class Socket {
     this.io;
     this.roomData = {};
     this.members = {};
+    this.listeners = {};
   }
 
   initialize(server) {
@@ -25,14 +26,13 @@ class Socket {
           let roomcode = this.members[socket.id].room;
 
           //Remove member from room
-          let index = this.roomData[roomcode].members.findIndex(
+          let isMember = this.roomData[roomcode].members.findIndex(
             (user) => user.socket_id === socket.id
           );
-
           let isHost;
 
-          if (index !== -1) {
-            let item = this.roomData[roomcode].members.splice(index, 1);
+          if (isMember !== -1) {
+            let item = this.roomData[roomcode].members.splice(isMember, 1);
             isHost = item[0].isHost;
             this.io
               .in(roomcode)
@@ -45,6 +45,7 @@ class Socket {
 
           //Remove room if no users are left
           if (this.roomData[roomcode].members.length <= 0) {
+            this.io.in(roomcode).emit("force leave");
             delete this.roomData[roomcode];
             console.log(roomcode + " has ended");
           } else if (this.roomData[roomcode].members.length > 0 && isHost) {
@@ -56,6 +57,19 @@ class Socket {
 
           //Remove user from user object
           delete this.members[socket.id];
+        } else if (this.listeners[socket.id]) {
+          let roomcode = this.listeners[socket.id].room;
+          let isVisualsConnection = this.roomData[
+            roomcode
+          ].visual_connections.indexOf(socket.id);
+          if (isVisualsConnection !== -1) {
+            this.roomData[roomcode].visual_connections.splice(
+              isVisualsConnection,
+              1
+            );
+          }
+
+          delete this.listeners[socket.id];
         }
       });
 
@@ -77,9 +91,11 @@ class Socket {
         this.roomData[room_id] = {
           queue: [],
           members: [],
+          visual_connections: [],
           banned_members: [],
           banned_songs: [],
           current_song: {},
+          audio_features: {},
           voting: [],
           played_songs: [],
           actions: [],
@@ -125,14 +141,36 @@ class Socket {
         target: user_info.display_name,
       });
     });
+
+    socket.on("listener join", (room_id) => {
+      if (!this.roomData[room_id]) {
+        this.io.to(socket.id).emit("force leave");
+      } else {
+        if (this.roomData[room_id].visual_connections.length >= 1) {
+          this.io.to(socket.id).emit("force leave");
+        } else {
+          socket.join(room_id);
+          this.listeners[socket.id] = { room: room_id };
+          this.roomData[room_id].visual_connections.push(socket.id);
+          this.io
+            .to(socket.id)
+            .emit("new song being played", this.roomData[room_id].current_song);
+          this.io
+            .to(socket.id)
+            .emit("audio features", this.roomData[room_id].audio_features);
+        }
+      }
+    });
   }
 
   statusEvents(socket) {
     socket.on("room status", (room_id) => {
-      if (socket.id === this.roomData[room_id].host) {
-        this.io
-          .to(socket.id)
-          .emit("room info", this.roomData[room_id], this.members);
+      if (this.roomData[room_id]) {
+        if (socket.id === this.roomData[room_id].host) {
+          this.io
+            .to(socket.id)
+            .emit("room info", this.roomData[room_id], this.members);
+        }
       }
     });
   }
@@ -263,10 +301,14 @@ class Socket {
   }
 
   setCurrentSong(socket) {
-    socket.on("Set Current Song", (room_id, song) => {
+    socket.on("Set Current Song", (room_id, song, audio_features) => {
       if (this.roomData[room_id] && song) {
         this.roomData[room_id].current_song = song;
-        socket.to(room_id).emit("new song being played", song);
+        this.roomData[room_id].audio_features = audio_features;
+        this.io.to(room_id).emit("new song being played", song);
+        this.io
+          .to(this.roomData[room_id].visual_connections[0])
+          .emit("audio features", audio_features);
       }
     });
 

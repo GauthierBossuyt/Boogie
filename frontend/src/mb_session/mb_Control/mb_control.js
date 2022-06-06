@@ -80,7 +80,6 @@ const Mb_Control = ({
           if (data.body.is_playing === false) {
             return false;
           } else if (data.body.is_playing === true) {
-            console.log(data.body);
             setPlayState(true);
             setData(data.body);
             return data.body;
@@ -133,9 +132,12 @@ const Mb_Control = ({
               </div>
             </div>
             <div className="control_bar_progress">
+              <div className="base_bar"></div>
               <div
-                className="base_bar"
-                style={{ width: percentage + "%" }}
+                className="progress_bar"
+                style={{
+                  width: percentage + "%",
+                }}
               ></div>
             </div>
           </div>

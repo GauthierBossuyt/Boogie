@@ -38,16 +38,6 @@
   justify-content: space-between;
 }
 
-.base_bar {
-  background-color: #ff2d6b;
-  border-radius: 6px;
-}
-
-.control_bar_progress {
-  background-color: #5c5b59;
-  border-radius: 6px;
-}
-
 .mb_song_data_text {
   overflow: hidden;
 }
