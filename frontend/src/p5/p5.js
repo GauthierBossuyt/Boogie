@@ -8,7 +8,6 @@ const P5 = ({ BPM }) => {
   const [songType, setSongType] = useState("");
   const [triggerRate, setTriggerRate] = useState(0);
   const test = useRef(BPM);
-  const types = ["acoustic", "moon", "rings"];
 
   useEffect(() => {
     setTriggerRate(Math.floor(3600 / BPM));

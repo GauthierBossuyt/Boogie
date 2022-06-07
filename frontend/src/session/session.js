@@ -208,7 +208,7 @@ const Session = () => {
         };
       }
     }
-  }, [sessionCode]);
+  }, [sessionCode, navigate]);
 
   useEffect(() => {
     setBanSearchData([]);

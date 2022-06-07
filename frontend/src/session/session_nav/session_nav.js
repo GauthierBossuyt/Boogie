@@ -1,8 +1,8 @@
 import "./session_nav.css";
 import Boogie_Logo from "../../images/SVG/Logo.svg";
 import Search from "../../images/SVG/search.svg";
-import Logout from "../../images/SVG/logout.svg";
-import Settings from "../../images/SVG/settings.svg";
+// import Logout from "../../images/SVG/logout.svg";
+// import Settings from "../../images/SVG/settings.svg";
 
 const SessionNav = ({
   sessionCode,
