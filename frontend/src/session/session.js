@@ -133,11 +133,12 @@ const Session = () => {
           setSettingsData(data);
         });
 
-        socket.on("successfully added song to queue", async (id) => {
+        socket.on("successfully added song to queue", async (id, queue) => {
           let song_details = await spotifyApi.getTrack(id);
           setNotificationData(
             `${song_details.body.name} has been added to queue`
           );
+          setQueueData(queue);
         });
 
         socket.on("send queue", async (data) => {
@@ -193,6 +194,7 @@ const Session = () => {
         });
 
         socket.on("update settings", (data) => {
+          console.log(data);
           setSettingsData(data);
         });
 
@@ -294,8 +296,10 @@ const Session = () => {
         sessionCode={sessionCode}
         searchResult={searchResult}
         showRoomDetails={showRoomDetails}
+        content={content}
         isHost={isHost}
         setLeavePopup={setLeavePopUp}
+        getQueueData={getQueueData}
       />
       <div className="session_content">
         {content === "voting" && voting ? (

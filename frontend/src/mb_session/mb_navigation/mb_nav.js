@@ -27,6 +27,7 @@ const Mb_Nav = ({
     if (touchData.startPoint.x > touchData.endPoint.x) {
       switch (content) {
         case "searching":
+          getQueueData();
           toggleContent("queue");
           break;
 
@@ -161,6 +162,7 @@ const Mb_Nav = ({
           <p
             className={content === "queue" ? "active" : ""}
             onClick={() => {
+              toggleContent("queue");
               getQueueData();
             }}
           >

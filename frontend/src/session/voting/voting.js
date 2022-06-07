@@ -88,7 +88,11 @@ const Voting = ({ data, voted, voteOnSong }) => {
                       <p className="vote-count">{song.votes}</p>
                     </div>
                     <div className="vote-container-text">
-                      <h1>{song.data.name}</h1>
+                      <h1>
+                        {song.data.name.length > 25
+                          ? song.data.name.substring(0, 25) + "..."
+                          : song.data.name}
+                      </h1>
                       <p>{song.data.artists[0].name}</p>
                     </div>
                   </div>
@@ -107,7 +111,11 @@ const Voting = ({ data, voted, voteOnSong }) => {
                       <p className="vote-count">{song.votes}</p>
                     </div>
                     <div className="vote-container-text">
-                      <h1>{song.data.name}</h1>
+                      <h1>
+                        {song.data.name.length > 25
+                          ? song.data.name.substring(0, 25) + "..."
+                          : song.data.name}
+                      </h1>
                       <p>{song.data.artists[0].name}</p>
                     </div>
                   </div>
@@ -123,7 +131,11 @@ const Voting = ({ data, voted, voteOnSong }) => {
                       <p className="vote-count">{song.votes}</p>
                     </div>
                     <div className="vote-container-text">
-                      <h1>{song.data.name}</h1>
+                      <h1>
+                        {song.data.name.length > 25
+                          ? song.data.name.substring(0, 25) + "..."
+                          : song.data.name}
+                      </h1>
                       <p>{song.data.artists[0].name}</p>
                     </div>
                   </div>

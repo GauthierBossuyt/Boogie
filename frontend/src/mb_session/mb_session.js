@@ -127,15 +127,15 @@ const Mb_Session = () => {
         });
 
         socket.on("room info", (data) => {
-          console.log(data);
           setSettingsData(data);
         });
 
-        socket.on("successfully added song to queue", async (id) => {
+        socket.on("successfully added song to queue", async (id, queue) => {
           let song_details = await spotifyApi.getTrack(id);
           setNotificationData(
             `${song_details.body.name} has been added to queue`
           );
+          setQueueData(queue);
         });
 
         socket.on("send queue", async (data) => {
@@ -147,6 +147,7 @@ const Mb_Session = () => {
           setVoting(boolean);
           setUserVoted(false);
           if (boolean) {
+            console.log(data);
             setVotingData(data);
             setNotificationData(`A new voting session has started!`);
           } else {

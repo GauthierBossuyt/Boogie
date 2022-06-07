@@ -8,9 +8,11 @@ const SessionNav = ({
   sessionCode,
   toggleContent,
   searchResult,
+  content,
   showRoomDetails,
   isHost,
   setLeavePopup,
+  getQueueData,
 }) => {
   return (
     <nav className="session_nav">
@@ -45,10 +47,8 @@ const SessionNav = ({
           {sessionCode}
         </h2>
       </div>
-      <div></div>
       <div className="nav-icons">
-        {" "}
-        {isHost ? (
+        {/* {isHost ? (
           <img
             src={Settings}
             alt={"Settings-icon"}
@@ -66,7 +66,53 @@ const SessionNav = ({
           onClick={() => {
             setLeavePopup(true);
           }}
-        ></img>
+        ></img> */}
+        <p
+          className={content === "voting" && "active_link"}
+          onClick={() => {
+            toggleContent("voting");
+          }}
+        >
+          Vote
+        </p>
+        <p
+          className={
+            content === "searching" || content === "result" ? "active_link" : ""
+          }
+          onClick={() => {
+            toggleContent("searching");
+          }}
+        >
+          Playlists
+        </p>
+        <p
+          className={content === "queue" && "active_link"}
+          onClick={() => {
+            getQueueData();
+          }}
+        >
+          Queue
+        </p>
+        {isHost ? (
+          <p
+            className={content === "settings" && "active_link"}
+            onClick={() => {
+              showRoomDetails(sessionCode);
+              toggleContent("settings");
+            }}
+          >
+            Settings
+          </p>
+        ) : (
+          ""
+        )}
+        <p
+          onClick={() => {
+            setLeavePopup(true);
+          }}
+        >
+          Leave
+        </p>
       </div>
     </nav>
   );

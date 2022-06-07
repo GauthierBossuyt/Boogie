@@ -49,6 +49,8 @@ class Socket {
             delete this.roomData[roomcode];
             console.log(roomcode + " has ended");
           } else if (this.roomData[roomcode].members.length > 0 && isHost) {
+            this.roomData[roomcode].host =
+              this.roomData[roomcode].members[0].socket_id;
             this.io
               .to(this.roomData[roomcode].members[0].socket_id)
               .emit("activate host mode");
@@ -59,14 +61,16 @@ class Socket {
           delete this.members[socket.id];
         } else if (this.listeners[socket.id]) {
           let roomcode = this.listeners[socket.id].room;
-          let isVisualsConnection = this.roomData[
-            roomcode
-          ].visual_connections.indexOf(socket.id);
-          if (isVisualsConnection !== -1) {
-            this.roomData[roomcode].visual_connections.splice(
-              isVisualsConnection,
-              1
-            );
+          if (this.roomData[roomcode]) {
+            let isVisualsConnection = this.roomData[
+              roomcode
+            ].visual_connections.indexOf(socket.id);
+            if (isVisualsConnection !== -1) {
+              this.roomData[roomcode].visual_connections.splice(
+                isVisualsConnection,
+                1
+              );
+            }
           }
 
           delete this.listeners[socket.id];
@@ -115,6 +119,11 @@ class Socket {
         );
         if (index !== -1) {
           this.io.to(socket.id).emit("force leave");
+        }
+        if (this.roomData[room_id].voting.length > 0) {
+          this.io
+            .to(socket.id)
+            .emit("start voting", true, this.roomData[room_id].voting);
         }
 
         // index = this.roomData[room_id].members.find(
@@ -166,6 +175,8 @@ class Socket {
   statusEvents(socket) {
     socket.on("room status", (room_id) => {
       if (this.roomData[room_id]) {
+        console.log(socket.id);
+        console.log(this.roomData[room_id].host);
         if (socket.id === this.roomData[room_id].host) {
           this.io
             .to(socket.id)
@@ -191,7 +202,11 @@ class Socket {
           this.roomData[room_id].queue.push(object);
           this.io
             .in(room_id)
-            .emit("successfully added song to queue", object.id);
+            .emit(
+              "successfully added song to queue",
+              object.id,
+              this.roomData[room_id].queue
+            );
           this.roomData[room_id].actions.push({
             message: `added ${object.name} to the queue.`,
             target: this.members[socket.id].name,
@@ -443,7 +458,7 @@ class Socket {
     });
 
     socket.on("unban user", (sessionCode, name) => {
-      if (sessionCode && song) {
+      if (this.roomData[sessionCode] && name) {
         let index = this.roomData[sessionCode].banned_members.indexOf(name);
         if (index >= 0) {
           this.roomData[sessionCode].banned_members.shift(index, 1);

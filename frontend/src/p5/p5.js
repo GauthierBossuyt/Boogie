@@ -13,7 +13,8 @@ const P5 = ({ BPM }) => {
   useEffect(() => {
     setTriggerRate(Math.floor(3600 / BPM));
     setSongType("rings");
-    switch (Math.floor(Math.random() * 3)) {
+    let i = Math.floor(Math.random() * 3);
+    switch (i) {
       case 0:
         setSongType("acoustic");
         break;
@@ -26,7 +27,7 @@ const P5 = ({ BPM }) => {
       default:
         break;
     }
-    console.log(BPM);
+    console.log(BPM, i);
   }, [BPM]);
 
   return (
