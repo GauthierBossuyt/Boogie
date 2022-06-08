@@ -33,11 +33,11 @@ const JoinForm = (func) => {
   async function onSubmit(value) {
     setError("");
     value = value.toUpperCase();
-    let res = await fetch(`http://localhost:8080/rooms?code=${value}`).then(
-      (resp) => {
-        return resp.json();
-      }
-    );
+    let res = await fetch(
+      `https://boogie-api.herokuapp.com/rooms?code=${value}`
+    ).then((resp) => {
+      return resp.json();
+    });
     if (res.room) {
       console.log(res.room);
       navigate("/session", {

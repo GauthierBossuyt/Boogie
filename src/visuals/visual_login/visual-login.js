@@ -29,11 +29,11 @@ const Visual_login = ({ setCode, setisLoggedIn }) => {
   async function onSubmit(value) {
     setError("");
     value = value.toUpperCase();
-    let res = await fetch(`http://localhost:8080/rooms?code=${value}`).then(
-      (resp) => {
-        return resp.json();
-      }
-    );
+    let res = await fetch(
+      `https://boogie-api.herokuapp.com/rooms?code=${value}`
+    ).then((resp) => {
+      return resp.json();
+    });
     if (res.room) {
       if (res.room.code) {
         setCode(res.room.code);

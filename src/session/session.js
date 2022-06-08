@@ -22,7 +22,7 @@ const spotifyApi = new SpotifyWebApi({
   clientId: "acce0f858d36481e8c57ced906643960",
 });
 
-const socket = io("http://localhost:8080", { autoConnect: false });
+const socket = io("https://boogie-api.herokuapp.com", { autoConnect: false });
 
 const Session = () => {
   //Getting data out of url

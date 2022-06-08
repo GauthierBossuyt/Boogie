@@ -29,7 +29,7 @@ const CreateForm = (func) => {
   }
 
   async function createRoom(data) {
-    let result = await fetch("http://localhost:8080/rooms", {
+    let result = await fetch("https://boogie-api.herokuapp.com/rooms", {
       method: "POST",
       cache: "no-cache",
       mode: "cors",

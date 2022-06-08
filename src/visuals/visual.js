@@ -4,7 +4,7 @@ import io from "socket.io-client";
 import Visual_login from "./visual_login/visual-login";
 import P5 from "../p5/p5";
 
-const socket = io("http://localhost:8080", { autoConnect: false });
+const socket = io("https://boogie-api.herokuapp.com", { autoConnect: false });
 
 const Visual = () => {
   const [code, setCode] = useState("");
