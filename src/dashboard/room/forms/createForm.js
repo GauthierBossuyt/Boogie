@@ -14,9 +14,9 @@ const CreateForm = (func) => {
 
   function formResultToObject(e) {
     e.preventDefault();
-    console.log(e);
     setError(false);
-    let result = { host: token, service: func.type };
+    console.log(func.data);
+    let result = { host: func.data.display_name, email: func.data.email };
     for (let i = 0; i < e.target.length - 2; i++) {
       if (e.target[i].type === "checkbox") {
         result[e.target[i].id] = e.target[i].checked;
@@ -42,12 +42,11 @@ const CreateForm = (func) => {
       setError(result.ERROR);
       setLoading(false);
     } else if (result.room) {
-      // window.location = `/session/${result.room.host}/${result.room.code}/${result.room.service}`;
+      // window.location = `/session/${result.room.host}/${result.room.code}`;
       navigate("/session", {
         state: {
-          accessToken: result.room.host,
+          accessToken: token,
           sessionCode: result.room.code,
-          service: result.room.service,
         },
       });
     }

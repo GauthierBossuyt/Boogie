@@ -68,7 +68,7 @@ const SessionNav = ({
           }}
         ></img> */}
         <p
-          className={content === "voting" && "active_link"}
+          className={content === "voting" ? "active_link" : ""}
           onClick={() => {
             toggleContent("voting");
           }}
@@ -86,7 +86,7 @@ const SessionNav = ({
           Playlists
         </p>
         <p
-          className={content === "queue" && "active_link"}
+          className={content === "queue" ? "active_link" : ""}
           onClick={() => {
             getQueueData();
           }}
@@ -95,7 +95,7 @@ const SessionNav = ({
         </p>
         {isHost ? (
           <p
-            className={content === "settings" && "active_link"}
+            className={content === "settings" ? "active_link" : ""}
             onClick={() => {
               showRoomDetails(sessionCode);
               toggleContent("settings");

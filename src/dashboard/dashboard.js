@@ -47,7 +47,7 @@ const Dashboard = ({ code, type }) => {
                     <JoinRoom
                       func={changeContentState}
                       accessToken={Token}
-                      type={type}
+                      data={Data.body}
                     />
                     <h1>OR</h1>
                     <button
@@ -65,7 +65,7 @@ const Dashboard = ({ code, type }) => {
                   <CreateRoom
                     func={changeContentState}
                     accessToken={Token}
-                    type={type}
+                    data={Data.body}
                   />
                 </div>
               )}
@@ -81,7 +81,7 @@ const Dashboard = ({ code, type }) => {
                 <CreateRoom
                   func={changeContentState}
                   accessToken={Token}
-                  type={type}
+                  data={Data.body}
                 />
               ) : (
                 ""
@@ -90,7 +90,7 @@ const Dashboard = ({ code, type }) => {
                 <JoinRoom
                   func={changeContentState}
                   accessToken={Token}
-                  type={type}
+                  data={Data.body}
                 />
               ) : (
                 ""

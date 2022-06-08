@@ -30,7 +30,6 @@ const Mb_Session = () => {
   //Saving data from url
   const [accessToken, setToken] = useState();
   const [sessionCode, setSessionCode] = useState();
-  const [service, setService] = useState();
   //User is host
   const [isHost, set_isHost] = useState(false);
   //Current active Content page
@@ -59,14 +58,9 @@ const Mb_Session = () => {
 
   useEffect(() => {
     if (location.state) {
-      if (
-        location.state.accessToken &&
-        location.state.sessionCode &&
-        location.state.service
-      ) {
+      if (location.state.accessToken && location.state.sessionCode) {
         setToken(location.state.accessToken);
         setSessionCode(location.state.sessionCode);
-        setService(location.state.service);
         if (accessToken !== undefined) {
           spotifyApi.setAccessToken(accessToken);
           spotifyApi.getUserPlaylists().then((data) => {
@@ -79,7 +73,7 @@ const Mb_Session = () => {
     } else {
       navigate("/");
     }
-  }, [location.state, navigate, accessToken, sessionCode, service]);
+  }, [location.state, navigate, accessToken, sessionCode]);
 
   useEffect(() => {
     if (resultData.type === "playlist") {
