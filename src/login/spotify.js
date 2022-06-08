@@ -1,5 +1,5 @@
 const authEndpoint = "https://accounts.spotify.com/authorize";
-const redirectURI = "http://boogie.brussels";
+const redirectURI = "https://boogie.brussels/";
 const clientID = "acce0f858d36481e8c57ced906643960";
 
 const scopes = [
