@@ -282,4 +282,5 @@ input:checked + .slider:before {
     display: flex;
     justify-content: space-between;
   }
+  
 }

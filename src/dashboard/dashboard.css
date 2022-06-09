@@ -23,6 +23,15 @@
 
 @media screen and (max-width: 768px) {
   .content {
-    padding: 50px 36px;
+    padding: 50px 36px 0;
+    overflow: hidden;
+  }
+
+  .content-text {
+    height: 100%;
+    overflow-y: scroll;
+    overflow-y: hidden;
+    border-radius: 8px;
+    padding-bottom: 5vh;
   }
 }
