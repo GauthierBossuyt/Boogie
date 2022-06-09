@@ -16,10 +16,10 @@ function Login() {
             <img src={Spotify_icon} alt="Spotify icon"></img>
             <p>Continue using Spotify</p>
           </a>
-          <a id="Apple" href="https://www.google.com">
+          {/* <a id="Apple" href="https://www.google.com">
             <img src={Apple_Icon} alt="Spotify icon"></img>
             <p>Continue using Apple</p>
-          </a>
+          </a> */}
         </div>
       </div>
     </div>
