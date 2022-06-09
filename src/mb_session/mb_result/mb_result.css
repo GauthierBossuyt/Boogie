@@ -1,14 +1,6 @@
-.mb_result_screen {
-  height: 100%;
-}
-
 @media screen and (max-width: 786px) {
   .results-list {
     margin-top: 0;
     touch-action: none;
-    max-height: 80%;
-    overflow: hidden;
   }
 }
-
-
