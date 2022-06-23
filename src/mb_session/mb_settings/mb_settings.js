@@ -19,6 +19,9 @@ const Mb_Settings = ({
         <h1>Something went wrong!</h1>
       ) : (
         <div className="mb_setting_content">
+          <a href="https://boogie.brussels/visual" target="_blank">
+            Activate Visuals
+          </a>
           <div className="mb_settings_container">
             <h1>Connected users</h1>
             <div className="mb_settings_list">

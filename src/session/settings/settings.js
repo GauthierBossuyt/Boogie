@@ -18,14 +18,19 @@ const Settings = ({
         <h1>Something went wrong!</h1>
       ) : (
         <div className="setting_content">
-          <button
-            className="cta-button"
-            onClick={() => {
-              endRoom();
-            }}
-          >
-            End Room
-          </button>
+          <div className="settings-buttons">
+            <button
+              className="cta-button"
+              onClick={() => {
+                endRoom();
+              }}
+            >
+              End Room
+            </button>
+            <a href="https://boogie.brussels/visual" target="_blank">
+              Activate Visuals
+            </a>
+          </div>
           <div className="settings-cols">
             <div className="settings-col1">
               <div className="connected_users">

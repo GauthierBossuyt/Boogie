@@ -18,3 +18,9 @@
   row-gap: 1rem;
   column-gap: 1rem;
 }
+
+@media screen and (max-width: 768px) {
+  .playlist-tile {
+    max-width: calc(50vw - 36px - 0.5rem);
+  }
+}

@@ -1,22 +1,42 @@
-.Login_page {
+.Login_screen {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+.Login_intro {
   background-color: #050401;
+  scroll-behavior: smooth;
   height: 100vh;
   width: 100vw;
   display: flex;
-  justify-content: space-around;
-  padding: 15vh 0 10vh;
+  padding: calc(50vh - 150px) 0 5vh;
   box-sizing: border-box;
   align-items: center;
   flex-direction: column;
+  justify-content: space-between;
+  row-gap: 10vh;
+}
+
+.login_title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 80px;
 }
 
 .logo {
-  margin-bottom: 3rem;
+  width: 100%;
+  max-width: 875px;
+  padding: 0 36px;
+  box-sizing: border-box;
 }
 
 .Login {
   width: 50vw;
   max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 120px;
 }
 
 .Login h1 {
@@ -25,50 +45,59 @@
   text-align: left;
 }
 
-.Login p {
-  margin: 0 0 3.8rem;
+.Login p,
+.login_title p {
+  margin: 0;
   padding: 0;
+  color: #4a4a4a;
+  text-align: center;
+  font-size: 1rem;
 }
 
-.Login a {
+.login_title a {
   text-decoration: none;
   color: #050401;
   display: block;
   margin-bottom: 1.25rem;
   padding: 0.75rem 1rem;
   border-radius: 6px;
-  font-size: 1.25rem;
-  display: flex;
-  justify-content: left;
-  align-items: center;
-  box-sizing: border-box;
+  background-color: #ff2d6b;
 }
 
-.Login a img {
-  width: 2.3rem;
-  height: 2.3rem;
-  margin-right: 1rem;
-}
-
-.Login a p {
+.login_title a p {
   margin: 0;
   padding: 0;
   color: #050401;
+  font-family: "Mazin Bold";
+  text-transform: uppercase;
+  font-size: 1.6rem;
+  text-align: center;
+  width: 100%;
 }
 
 .login_buttons {
   width: 100%;
+  max-width: 320px;
+  text-align: center;
 }
 
-#Spotify {
-  background-color: #1be68c;
+.scroll_down {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
-#Apple {
-  background-color: #fff;
+.scroll_down img {
+  height: 30px;
+  width: 30px;
+  padding-bottom: 10px;
 }
 
 @media screen and (max-width: 768px) {
+  .Login_intro {
+    padding-top: calc(50vh - 120px);
+  }
+
   .Login {
     width: 100vw;
     box-sizing: border-box;
@@ -78,7 +107,170 @@
     align-items: center;
   }
 
-  .logo {
-    height: 100px;
+  .Login {
+    width: 100%;
+    padding: 0 36px;
+    box-sizing: border-box;
+  }
+
+  .login_title a p {
+    font-size: 1rem;
+  }
+
+  .login_title a {
+    width: initial;
+    font-family: "Mazin Bold";
+    display: inline-block;
+    padding: 0.5rem 1.6rem;
+  }
+
+  .login_title {
+    row-gap: 48px;
+  }
+}
+
+/*EXPLANATION SECTION*/
+.login_explanation {
+  scroll-behavior: smooth;
+  padding: 0 11vw 10vh;
+  width: 100vw;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  row-gap: 16rem;
+}
+
+.boogie-mission {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 16px;
+  margin: 160px 0 0;
+}
+
+.boogie-mission p {
+  grid-column: 2/12;
+  text-align: center;
+  font-size: 2rem;
+}
+
+.login-voting {
+  display: flex;
+  column-gap: 5rem;
+}
+
+.login-voting div,
+.login-settings div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.login-voting div {
+  width: 45%;
+}
+
+.login-div h1,
+.visuals-div h1 {
+  font-size: 3.5rem;
+  font-family: "Mazin Extra Bold";
+  margin: 0;
+}
+
+.login-div h1 span,
+.visuals-div h1 span {
+  color: #ff2d6b;
+}
+
+.login-div p {
+  margin-top: 16px;
+}
+
+.login-settings {
+  display: flex;
+  column-gap: 5rem;
+}
+
+.setting-div {
+  width: 35%;
+}
+
+#setting_animation {
+  width: 65%;
+}
+
+.login-visuals {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 5rem;
+}
+
+.visuals-div {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-column-gap: 16px;
+  text-align: center;
+}
+
+.visuals-div h1 {
+  grid-column: 4/10;
+  grid-row: 1/2;
+}
+.visuals-div p {
+  grid-column: 4/10;
+  grid-row: 2/3;
+}
+
+@media screen and (max-width: 768px) {
+  .boogie-mission p {
+    grid-column: 1/13;
+    text-align: left;
+    width: 100%;
+  }
+
+  #voting_animation,
+  #setting_animation {
+    width: 100%;
+  }
+
+  .login_explanation {
+    row-gap: 10rem;
+    padding-top: 6vh;
+  }
+
+  .boogie-mission {
+    margin-top: 6vh;
+  }
+
+  .boogie-mission p {
+    font-size: 1.6rem;
+  }
+
+  .login-voting {
+    flex-direction: column;
+  }
+
+  .login-settings,
+  .login-visuals {
+    flex-direction: column-reverse;
+  }
+
+  .login-voting div,
+  .setting-div {
+    margin-top: 3.6rem;
+    width: 100%;
+  }
+
+  .login-div h1,
+  .setting-div h1,
+  .visuals-div h1 {
+    font-size: 2.4rem;
+  }
+
+  .visuals-div h1,
+  .visuals-div p {
+    grid-column: 1/13;
   }
 }

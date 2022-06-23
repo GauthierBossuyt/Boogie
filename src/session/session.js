@@ -49,6 +49,7 @@ const Session = () => {
   const [settingsData, setSettingsData] = useState(null);
   //Queue data for queue page
   const [queueData, setQueueData] = useState(null);
+  const [nextSongData, setNextSongData] = useState({});
   //Notification data for notification
   const [notification_data, setNotificationData] = useState("");
   //Current Song data for control
@@ -112,8 +113,26 @@ const Session = () => {
 
         joinSession();
 
-        socket.on("activate host mode", () => {
+        socket.on("activate host mode", async () => {
           set_isHost(true);
+          let playbackstate = await spotifyApi.getMyCurrentPlaybackState();
+          console.log(playbackstate);
+          if (playbackstate.body !== null) {
+            if (!playbackstate.body.is_playing) {
+              if (playbackstate.body.item.uri) {
+                setCurrentSong(playbackstate.body);
+                spotifyApi.play();
+              } else {
+                setNotificationData(
+                  `Please play a song on Spotify and click the refresh button.`
+                );
+              }
+            }
+          } else {
+            setNotificationData(
+              `Please activate Spotify on one of your devices.`
+            );
+          }
         });
 
         socket.on("person joined", (data, name) => {
@@ -123,7 +142,6 @@ const Session = () => {
         });
 
         socket.on("room info", (data) => {
-          console.log(data);
           setSettingsData(data);
         });
 
@@ -140,8 +158,9 @@ const Session = () => {
           setContent("queue");
         });
 
-        socket.on("start voting", (boolean, data) => {
+        socket.on("start voting", (boolean, data, queue) => {
           setVoting(boolean);
+          setQueueData(queue);
           setUserVoted(false);
           if (boolean) {
             setVotingData(data);
@@ -156,9 +175,17 @@ const Session = () => {
 
         socket.on("add song to queue", async (data) => {
           let song_details = await spotifyApi.getTrack(data.id);
-          setNotificationData(`${song_details.body.name} will be played next!`);
-          spotifyApi.addToQueue(data.uri);
-          socket.emit("Successfully added song to queue", sessionCode, data);
+          let result = await spotifyApi.addToQueue(data.uri);
+          if (result.statusCode === 204) {
+            setNotificationData(
+              `${song_details.body.name} will be played next!`
+            );
+            socket.emit(
+              "successfully added song to the queue",
+              sessionCode,
+              song_details.body
+            );
+          }
         });
 
         socket.on("display message", (txt) => {
@@ -178,7 +205,6 @@ const Session = () => {
         });
 
         socket.on("requested current song data", (data) => {
-          console.log(data);
           setCurrentSongData(data);
         });
 
@@ -188,13 +214,16 @@ const Session = () => {
         });
 
         socket.on("update settings", (data) => {
-          console.log(data);
           setSettingsData(data);
         });
 
         socket.on("force leave", () => {
           socket.disconnect();
           navigate("/login");
+        });
+
+        socket.on("next song data", (data) => {
+          setNextSongData(data);
         });
 
         return () => {
@@ -240,10 +269,12 @@ const Session = () => {
 
   async function setCurrentSong(song) {
     if (sessionCode) {
-      let audiofeatures = await spotifyApi.getAudioFeaturesForTrack(
-        song.item.id
-      );
-      socket.emit("Set Current Song", sessionCode, song, audiofeatures.body);
+      if (song && song.item) {
+        let audiofeatures = await spotifyApi.getAudioFeaturesForTrack(
+          song.item.id
+        );
+        socket.emit("Set Current Song", sessionCode, song, audiofeatures.body);
+      }
     }
   }
 
@@ -301,7 +332,7 @@ const Session = () => {
         ) : (
           ""
         )}
-        {content === "voting" && !voting ? <Info /> : ""}
+        {content === "voting" && !voting ? <Info isHost={isHost} /> : ""}
         {content === "searching" ? (
           <Search
             searchResult={searchResult}
@@ -333,7 +364,11 @@ const Session = () => {
           ""
         )}
         {content === "queue" ? (
-          <Queue data={queueData} toggleContent={setContent} />
+          <Queue
+            data={queueData}
+            toggleContent={setContent}
+            nextSongData={nextSongData}
+          />
         ) : (
           ""
         )}
@@ -347,6 +382,7 @@ const Session = () => {
           getQueueData={getQueueData}
           setCurrentSong={setCurrentSong}
           votingData={votingData}
+          setNotificationData={setNotificationData}
         />
       ) : (
         <ControlMember

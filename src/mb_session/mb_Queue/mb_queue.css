@@ -3,7 +3,6 @@
   margin: 0 36px;
   display: flex;
   flex-direction: column;
-  row-gap: 1rem;
 }
 
 .mb-queue-screen p {
@@ -13,5 +12,31 @@
 @media screen and (max-width: 768px) {
   .queue-result-info {
     overflow-x: hidden;
+  }
+
+  .mb-queue-screen h1 {
+    font-size: 1.5rem;
+  }
+
+  .mb-results {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    overflow: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .mb-results::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mb-playsnext {
+    overflow: inherit;
+    margin-bottom: 2rem;
+  }
+
+  .mb-results h1:first-of-type {
+    margin: 0;
   }
 }

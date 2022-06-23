@@ -1,6 +1,6 @@
 import "./info.css";
 
-const Info = () => {
+const Info = (isHost) => {
   return (
     <div className="info_screen">
       <h1>Instructions</h1>
@@ -14,6 +14,13 @@ const Info = () => {
         are in the queue, if there is only one song it will automatically play
         next. When no songs are in the queue the voting session will be skipped.
       </p>
+      {isHost ? (
+        <a href="https://boogie.brussels/visual" target="_blank">
+          Activate Visuals
+        </a>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

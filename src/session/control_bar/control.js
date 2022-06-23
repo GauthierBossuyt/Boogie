@@ -9,6 +9,7 @@ const Control = ({
   getQueueData,
   setCurrentSong,
   votingData,
+  setNotificationData,
 }) => {
   const [data, setData] = useState();
   const [playState, setPlayState] = useState(true);
@@ -91,6 +92,7 @@ const Control = ({
             return data.body;
           }
         } else {
+          setNotificationData(`Play a song on Spotify to start the session!`);
           return false;
         }
       })
@@ -239,7 +241,7 @@ const Control = ({
               loadNewSong();
             }}
           >
-            Refresh
+            Start Session
           </button>
         </div>
       )}

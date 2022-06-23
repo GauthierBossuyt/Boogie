@@ -2,7 +2,7 @@ import "./queue.css";
 
 import Arrow from "../../images/SVG/black_arrow.svg";
 
-const Queue = ({ data, toggleContent }) => {
+const Queue = ({ data, toggleContent, nextSongData }) => {
   function MStoMinAndSec(time) {
     //https://stackoverflow.com/questions/21294302/converting-milliseconds-to-minutes-and-seconds-with-javascript
     var minutes = Math.floor(time / 60000);
@@ -12,6 +12,40 @@ const Queue = ({ data, toggleContent }) => {
 
   return (
     <div className="queue_screen">
+      <div className="queue-top-bar">
+        {nextSongData.name ? (
+          <div className="next-song-result">
+            <h1>Playing next</h1>
+            <div key={nextSongData.id} className="queue_result">
+              <img
+                alt="Album Cover"
+                src={nextSongData.album.images[0].url}
+              ></img>
+              <div className="queue-result-info">
+                <p>{nextSongData.name}</p>
+                <p>
+                  {nextSongData.artists.map((artist, i) => {
+                    let string;
+                    if (i === 0) {
+                      string = artist.name;
+                    } else {
+                      string = `, ${artist.name}`;
+                    }
+                    return string;
+                  })}
+                </p>
+              </div>
+              <div className="queue-time">
+                <p className="queue-time-result">
+                  {MStoMinAndSec(nextSongData.duration_ms)}
+                </p>
+              </div>
+            </div>
+          </div>
+        ) : (
+          ""
+        )}
+      </div>
       <div className="queue-top-bar">
         <h1>Next up for vote</h1>
         <button

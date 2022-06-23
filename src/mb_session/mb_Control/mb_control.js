@@ -6,6 +6,7 @@ const Mb_Control = ({
   spotifyAPI,
   triggerVoting,
   setCurrentSong,
+  setNotificationData,
 }) => {
   const [data, setData] = useState();
   const [playState, setPlayState] = useState(true);
@@ -77,7 +78,9 @@ const Mb_Control = ({
     await API.getMyCurrentPlaybackState()
       .then((data) => {
         if (data.statusCode === 200) {
+          console.log(data);
           if (data.body.is_playing === false) {
+            setNotificationData(`Play a song on Spotify to start the session!`);
             return false;
           } else if (data.body.is_playing === true) {
             setPlayState(true);
@@ -151,7 +154,7 @@ const Mb_Control = ({
                 loadNewSong();
               }}
             >
-              Refresh
+              Start Session
             </button>
           </div>
         </div>
