@@ -116,7 +116,6 @@ const Session = () => {
         socket.on("activate host mode", async () => {
           set_isHost(true);
           let playbackstate = await spotifyApi.getMyCurrentPlaybackState();
-          console.log(playbackstate);
           if (playbackstate.body !== null) {
             if (!playbackstate.body.is_playing) {
               if (playbackstate.body.item.uri) {
@@ -224,6 +223,21 @@ const Session = () => {
 
         socket.on("next song data", (data) => {
           setNextSongData(data);
+        });
+
+        socket.on("request for suggestion songs", async (data) => {
+          let lastSong = await spotifyApi.getMyRecentlyPlayedTracks({
+            limit: 1,
+          });
+          let recommendations = await spotifyApi.getRecommendations({
+            seed_tracks: `${lastSong.body.items[0].track.id}`,
+            limit: 3,
+          });
+          socket.emit(
+            "suggestion voting",
+            recommendations.body.tracks,
+            sessionCode
+          );
         });
 
         return () => {

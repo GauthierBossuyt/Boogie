@@ -15,7 +15,7 @@ const Queue = ({ data, toggleContent, nextSongData }) => {
       <div className="queue-top-bar">
         {nextSongData.name ? (
           <div className="next-song-result">
-            <h1>Playing next</h1>
+            <h1>Recently Added</h1>
             <div key={nextSongData.id} className="queue_result">
               <img
                 alt="Album Cover"

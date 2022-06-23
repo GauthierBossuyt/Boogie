@@ -12,7 +12,6 @@ const Mb_Voting = ({ data, voted, voteOnSong }) => {
   const voteList = useRef(null);
 
   useEffect(() => {
-    console.log(data);
     let sorted = [...data].sort((a, b) => b.votes - a.votes);
     setVoteData(sorted);
     setActive({ inc: 0, data: sorted[0] });

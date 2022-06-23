@@ -39,7 +39,6 @@ const JoinForm = (func) => {
       return resp.json();
     });
     if (res.room) {
-      console.log(res.room);
       navigate("/session", {
         state: {
           accessToken: func.accessToken,

@@ -118,7 +118,6 @@ const Mb_Session = () => {
           if (playbackstate.body !== null) {
             if (!playbackstate.body.is_playing) {
               if (playbackstate.body.item.uri) {
-                console.log(playbackstate);
                 setCurrentSong(playbackstate);
                 spotifyApi.play();
               } else {
@@ -162,7 +161,6 @@ const Mb_Session = () => {
           setQueueData(queue);
           setUserVoted(false);
           if (boolean) {
-            console.log(data);
             setVotingData(data);
             setNotificationData(`A new voting session has started!`);
           } else {
@@ -226,6 +224,21 @@ const Mb_Session = () => {
           setNextSongData(data);
         });
 
+        socket.on("request for suggestion songs", async (data) => {
+          let lastSong = await spotifyApi.getMyRecentlyPlayedTracks({
+            limit: 1,
+          });
+          let recommendations = await spotifyApi.getRecommendations({
+            seed_tracks: `${lastSong.body.items[0].track.id}`,
+            limit: 3,
+          });
+          socket.emit(
+            "suggestion voting",
+            recommendations.body.tracks,
+            sessionCode
+          );
+        });
+
         return () => {
           socket.disconnect();
         };
@@ -243,7 +256,6 @@ const Mb_Session = () => {
 
   function searchResult(e, type, value) {
     if (e.key === "Enter" || e.type === "click") {
-      console.log(type, value);
       setResultData({ type: type, data: value });
       setContent("result");
     }

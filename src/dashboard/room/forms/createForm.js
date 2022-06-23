@@ -15,7 +15,6 @@ const CreateForm = (func) => {
   function formResultToObject(e) {
     e.preventDefault();
     setError(false);
-    console.log(func.data);
     let result = { host: func.data.display_name, email: func.data.email };
     for (let i = 0; i < e.target.length - 2; i++) {
       if (e.target[i].type === "checkbox") {

@@ -12,7 +12,7 @@ const Mb_Queue = ({ data, nextSongData }) => {
     <div className="mb-queue-screen">
       {nextSongData.name ? (
         <div className="mb-results mb-playsnext">
-          <h1>Playing next</h1>
+          <h1>Recently Added</h1>
           <div key={nextSongData.id} className="queue_result">
             <img alt="Album Cover" src={nextSongData.album.images[0].url}></img>
             <div className="queue-result-info">

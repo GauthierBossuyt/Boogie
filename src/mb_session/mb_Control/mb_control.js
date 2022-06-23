@@ -78,7 +78,6 @@ const Mb_Control = ({
     await API.getMyCurrentPlaybackState()
       .then((data) => {
         if (data.statusCode === 200) {
-          console.log(data);
           if (data.body.is_playing === false) {
             setNotificationData(`Play a song on Spotify to start the session!`);
             return false;

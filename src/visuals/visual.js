@@ -23,7 +23,6 @@ const Visual = () => {
 
     socket.on("audio features", (data) => {
       setSongFeatures(data);
-      console.log(data);
     });
 
     socket.once("force leave", () => {

@@ -7,7 +7,6 @@ const Voting = ({ data, voted, voteOnSong }) => {
 
   useEffect(() => {
     setVoteData(data);
-    console.log(data);
   }, [data]);
 
   return (

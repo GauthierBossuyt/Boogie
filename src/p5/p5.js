@@ -26,7 +26,6 @@ const P5 = ({ BPM }) => {
       default:
         break;
     }
-    console.log(BPM, i);
   }, [BPM]);
 
   return (
